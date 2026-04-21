@@ -1,0 +1,13 @@
+# Trae Solo internal
+.trae/
+
+# Uploaded files (temporary)
+.uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Obsidian workspace settings (keep .obsidian folder if exists)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
