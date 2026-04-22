@@ -13,6 +13,9 @@
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
+    "build:wiki": "npx quartz build -d ../Content",
+    "build:cf": "node ./scripts/build-cloudflare.mjs",
+    "dev:wiki": "npx quartz build --serve -d ../Content",
     "docs": "npx quartz build --serve -d docs",
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",

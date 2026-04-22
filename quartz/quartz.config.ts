@@ -9,12 +9,13 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "CS Wiki",
-    pageTitleSuffix: "— CS Base",
+    pageTitleSuffix: " - CS Base",
     enableSPA: true,
     enablePopovers: true,
     locale: "zh-CN",
+    // Replace this with your custom domain after binding it in Cloudflare.
     baseUrl: "obsidian-csbase.pages.dev",
-    ignorePatterns: ["private", "templates", ".obsidian", "_archive", "quartz", "node_modules", ".git", "00-Raw素材", "_templates"],
+    ignorePatterns: ["private", "templates", ".obsidian", "_archive", "_templates", "00-Raw素材"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -85,7 +86,7 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
+      // Comment out CustomOgImages to speed up build time.
       Plugin.CustomOgImages(),
     ],
   },
