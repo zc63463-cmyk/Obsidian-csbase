@@ -8,6 +8,10 @@
 .DS_Store
 Thumbs.db
 
+# Quartz build outputs
+quartz/public/
+quartz/.quartz/
+
 # Obsidian workspace settings (keep .obsidian folder if exists)
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
