@@ -6,8 +6,11 @@ tags: [Dijkstra算法, 单源最短路径, 贪心算法, 优先队列, 图算法
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/松弛操作"]], [["算法导论/concepts/07-数据结构实例/优先队列"]], [["算法导论/concepts/20-图算法/最短路径树"]]
-, [["算法导论/concepts/20-图算法/Johnson算法"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/松弛操作\"]]"
+  - "[[\"算法导论/concepts/07-数据结构实例/优先队列\"]]"
+  - "[[\"算法导论/concepts/20-图算法/最短路径树\"]]"
+  - "[[\"算法导论/concepts/20-图算法/Johnson算法\"]]"
 aliases: ["Dijkstra's Algorithm"]
 ---
 # Dijkstra算法

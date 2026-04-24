@@ -5,7 +5,9 @@ tags: [单源最短路径, Dijkstra算法, Bellman-Ford算法, 图算法对比]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/Dijkstra算法"]], [["算法导论/concepts/20-图算法/Bellman-Ford算法"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/Dijkstra算法\"]]"
+  - "[[\"算法导论/concepts/20-图算法/Bellman-Ford算法\"]]"
 ---
 # Dijkstra算法 vs Bellman-Ford算法
 

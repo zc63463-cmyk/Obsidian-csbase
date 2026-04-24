@@ -6,8 +6,11 @@ tags: [Johnson算法, 所有结点对最短路径, 重赋权, Bellman-Ford算法
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/所有结点对最短路径"]], [["算法导论/concepts/20-图算法/Bellman-Ford算法"]], [["算法导论/concepts/20-图算法/Dijkstra算法"]]
-, [["算法导论/concepts/20-图算法/负权环"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/所有结点对最短路径\"]]"
+  - "[[\"算法导论/concepts/20-图算法/Bellman-Ford算法\"]]"
+  - "[[\"算法导论/concepts/20-图算法/Dijkstra算法\"]]"
+  - "[[\"算法导论/concepts/20-图算法/负权环\"]]"
 aliases: ["Johnson's Algorithm"]
 ---
 # Johnson算法

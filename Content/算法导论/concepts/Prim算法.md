@@ -6,7 +6,10 @@ tags: [Prim算法, 最小生成树, 贪心算法, 优先队列, 图算法]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/最小生成树"]], [["算法导论/concepts/07-数据结构实例/优先队列"]], [["算法导论/concepts/20-图算法/安全边定理"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/最小生成树\"]]"
+  - "[[\"算法导论/concepts/07-数据结构实例/优先队列\"]]"
+  - "[[\"算法导论/concepts/20-图算法/安全边定理\"]]"
 aliases: ["Prim's Algorithm", "Jarník算法", "Prim-Jarník算法"]
 ---
 # Prim算法

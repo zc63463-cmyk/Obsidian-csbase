@@ -5,7 +5,9 @@ tags: [最短路径, 所有结点对, 动态规划, 稠密图, 稀疏图]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/Floyd-Warshall算法"]], [["算法导论/concepts/20-图算法/Johnson算法"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/Floyd-Warshall算法\"]]"
+  - "[[\"算法导论/concepts/20-图算法/Johnson算法\"]]"
 ---
 # Floyd-Warshall算法 vs Johnson算法
 

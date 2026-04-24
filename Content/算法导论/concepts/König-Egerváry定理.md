@@ -6,7 +6,9 @@ tags: [二分匹配, 顶点覆盖, 最大匹配, König定理, 对偶关系]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/二分匹配"]], [["算法导论/concepts/20-图算法/最小割"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/二分匹配\"]]"
+  - "[[\"算法导论/concepts/20-图算法/最小割\"]]"
 aliases: ["König's Theorem", "König-Egervary定理"]
 ---
 # König-Egerváry定理

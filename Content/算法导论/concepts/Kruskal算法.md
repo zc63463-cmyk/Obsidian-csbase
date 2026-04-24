@@ -6,7 +6,10 @@ tags: [Kruskal算法, 最小生成树, 贪心算法, 并查集, 图算法]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/最小生成树"]], [["算法导论/concepts/19-不相交集合/不相交集合数据结构"]], [["算法导论/concepts/20-图算法/安全边定理"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/最小生成树\"]]"
+  - "[[\"算法导论/concepts/19-不相交集合/不相交集合数据结构\"]]"
+  - "[[\"算法导论/concepts/20-图算法/安全边定理\"]]"
 aliases: ["Kruskal's Algorithm"]
 ---
 # Kruskal算法

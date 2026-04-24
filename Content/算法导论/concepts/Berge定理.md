@@ -6,7 +6,9 @@ tags: [二分匹配, 增广路径, 最大匹配, Berge定理, 对称差]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/二分匹配"]], [["算法导论/concepts/20-图算法/增广路径"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/二分匹配\"]]"
+  - "[[\"算法导论/concepts/20-图算法/增广路径\"]]"
 aliases: ["Berge's Theorem", "Berge引理"]
 ---
 # Berge定理

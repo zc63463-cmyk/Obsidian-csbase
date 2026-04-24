@@ -6,7 +6,9 @@ tags: [二分匹配, 完美匹配, Hall条件, 最大流, 组合数学]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/二分匹配"]], [["算法导论/concepts/20-图算法/最大流"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/二分匹配\"]]"
+  - "[[\"算法导论/concepts/20-图算法/最大流\"]]"
 aliases: ["Hall's Marriage Theorem", "Hall定理", "婚配定理"]
 ---
 # Hall婚配定理

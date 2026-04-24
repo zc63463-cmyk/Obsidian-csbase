@@ -5,7 +5,9 @@ tags: [匹配, 二分匹配, 稳定匹配, Gale-Shapley, Hopcroft-Karp]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/二分匹配"]], [["算法导论/concepts/20-图算法/稳定匹配"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/二分匹配\"]]"
+  - "[[\"算法导论/concepts/20-图算法/稳定匹配\"]]"
 ---
 # 二分匹配 vs 稳定匹配
 

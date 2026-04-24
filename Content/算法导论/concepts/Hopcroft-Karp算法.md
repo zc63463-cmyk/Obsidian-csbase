@@ -6,7 +6,9 @@ tags: [二分匹配, Hopcroft-Karp, BFS, DFS, 分层图, 增广路径]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/二分匹配"]], [["算法导论/concepts/20-图算法/增广路径"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/二分匹配\"]]"
+  - "[[\"算法导论/concepts/20-图算法/增广路径\"]]"
 aliases: ["Hopcroft-Karp Algorithm"]
 ---
 # Hopcroft-Karp算法

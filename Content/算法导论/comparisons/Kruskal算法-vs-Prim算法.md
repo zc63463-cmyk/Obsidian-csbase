@@ -5,7 +5,9 @@ tags: [最小生成树, MST, Kruskal算法, Prim算法, 图算法对比]
 sources:
   - Cormen
 date: 2026-04-23
-related: [["算法导论/concepts/20-图算法/Kruskal算法"]], [["算法导论/concepts/20-图算法/Prim算法"]]
+related:
+  - "[[\"算法导论/concepts/20-图算法/Kruskal算法\"]]"
+  - "[[\"算法导论/concepts/20-图算法/Prim算法\"]]"
 ---
 # Kruskal算法 vs Prim算法
 
