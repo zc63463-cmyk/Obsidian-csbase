@@ -12,25 +12,111 @@ aliases:
 date: 2026-04-21
 cssclasses:
   - wide-page
+  - subject-page
 sources:
   - Cormen
 related: []
 ---
 
-# 算法导论知识库
+<div class="subject-hero">
 
-> [!abstract] 概览
-> 基于 Cormen、Leiserson、Rivest、Stein《算法导论（Introduction to Algorithms）》第4版构建的知识库，覆盖算法基础、排序与序统计、数据结构、高级设计与分析技术、高级数据结构、图算法、专题选讲及数学附录。
+# 💻 算法导论
 
-## 教材信息
+<span class="hero-subtitle">Introduction to Algorithms · 第4版</span>
 
-| 项目 | 内容 |
-|:-----|:-----|
-| 书名 | 算法导论（Introduction to Algorithms） |
-| 作者 | Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein |
-| 版次 | 第4版 |
-| 译者 | 殷建平、徐云、王刚、刘晓光、苏明、王宏志、朱大勇 |
-| 出版社 | MIT Press / 机械工业出版社 |
+<div class="hero-meta">
+  <span class="meta-item">👤 Cormen / Leiserson / Rivest / Stein</span>
+  <span class="meta-item">🏢 MIT Press / 机械工业出版社</span>
+  <span class="meta-item">🌐 译者：殷建平、徐云、王刚 等</span>
+</div>
+
+<p class="hero-desc">基于 CLRS 第4版构建的知识库，覆盖算法基础、排序与序统计、数据结构、高级设计与分析技术、高级数据结构、图算法、专题选讲及数学附录。</p>
+
+<div class="hero-badges">
+  <span class="badge badge-new">🆕 新启动</span>
+  <span class="badge">📖 159篇笔记</span>
+  <span class="badge">📐 148个概念</span>
+  <span class="badge">📕 26个定理</span>
+</div>
+
+</div>
+
+---
+
+## 学习进度
+
+<div class="progress-panel">
+
+<div class="progress-overview">
+  <div class="progress-bar-container">
+    <div class="progress-bar" style="width: 89.7%"></div>
+  </div>
+  <div class="progress-stats">35 / 39 章节 · 89.7% · 187 Wiki 页</div>
+</div>
+
+<div class="progress-breakdown">
+
+<div class="progress-row completed">
+  <span class="progress-label">Part I · 基础</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">5/5</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row completed">
+  <span class="progress-label">Part II · 排序与序统计</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">4/4</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row completed">
+  <span class="progress-label">Part III · 数据结构</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">4/4</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row completed">
+  <span class="progress-label">Part IV · 高级设计与分析</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">3/3</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row completed">
+  <span class="progress-label">Part V · 高级数据结构</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">3/3</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row completed">
+  <span class="progress-label">Part VI · 图算法</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">6/6</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row completed">
+  <span class="progress-label">Part VII · 专题选讲</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:100%"></span></span>
+  <span class="progress-count">10/10</span>
+  <span class="progress-status">✅</span>
+</div>
+
+<div class="progress-row pending">
+  <span class="progress-label">Part VIII · 附录</span>
+  <span class="progress-bar-mini"><span class="progress-fill" style="width:0%"></span></span>
+  <span class="progress-count">0/4</span>
+  <span class="progress-status">⏳</span>
+</div>
+
+</div>
+
+</div>
+
+---
 
 ## 章节列表
 
@@ -113,22 +199,44 @@ related: []
 | 附录C | 计数与概率 | — | 参考 | 待学习 |
 | 附录D | 矩阵 | — | 参考 | 待学习 |
 
+---
+
 ## Wiki 页面入口
 
-| 类型 | 目录 | 数量 | 说明 |
-|:-----|:-----|:-----|:-----|
-| 概念页 | `concepts/` | 148 | 跨章节核心概念提炼 |
-| 定理页 | `theorems/` | 26 | 重要定理独立页面 |
-| 对比页 | `comparisons/` | 13 | 跨概念对比分析 |
-| 常问问题 | `queries/` | 0 | 常问问题与深度解答 |
+<div class="wiki-badges">
 
-## 学习进度
+<a class="wiki-badge" href="/算法导论/concepts/">
+  <span class="wiki-badge-icon">📖</span>
+  <span class="wiki-badge-label">概念页</span>
+  <span class="wiki-badge-count">148</span>
+</a>
 
-> [!info] 进度概览
-> - 当前阶段：阶段二（数据结构）
-> - 已学章节：35 / 35
-> - 已创建笔记：143 篇
-> - 已创建概念页：148 个
-> - 已创建 Canvas：0 个
-> - 已编译 Wiki 页面：187 个
-> - 学习路线：[[学习路线 v0.1]]
+<a class="wiki-badge" href="/算法导论/theorems/">
+  <span class="wiki-badge-icon">📕</span>
+  <span class="wiki-badge-label">定理页</span>
+  <span class="wiki-badge-count">26</span>
+</a>
+
+<a class="wiki-badge" href="/算法导论/comparisons/">
+  <span class="wiki-badge-icon">⚖️</span>
+  <span class="wiki-badge-label">对比页</span>
+  <span class="wiki-badge-count">13</span>
+</a>
+
+<a class="wiki-badge" href="/算法导论/queries/">
+  <span class="wiki-badge-icon">🔍</span>
+  <span class="wiki-badge-label">常问问题</span>
+  <span class="wiki-badge-count">0</span>
+</a>
+
+</div>
+
+---
+
+## 跨学科关联
+
+- [[逻辑学/index|🧠 逻辑学]] — 第8-10章命题逻辑、谓词逻辑与离散数学第1章有内容重叠
+- [[离散数学/index|📐 离散数学]] — 离散数学是算法的数学基础，阶段二黄金同步搭档
+- [[学习路线 v0.1|📝 学习路线]] — 三阶段学习计划与执行进度
+
+#学习/算法导论/导航
