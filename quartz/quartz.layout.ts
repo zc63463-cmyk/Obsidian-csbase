@@ -1,6 +1,5 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
-import { FileTrieNode } from "./quartz/util/fileTrie"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -31,9 +30,6 @@ const typeMap: Record<string, string> = {
   "comparisons": "⚖️ 对比",
   "queries": "🔍 题型",
 }
-
-// 学科默认展开，内容类型默认折叠
-const subjectFolders = new Set(Object.keys(subjectMap))
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
@@ -79,7 +75,7 @@ export const defaultContentPageLayout: PageLayout = {
       },
 
       // 学科层 vs 内容类型层差异化命名
-      mapFn: (node: FileTrieNode) => {
+      mapFn: (node) => {
         const segment = node.slugSegment
 
         // 学科层：直接映射
@@ -95,9 +91,11 @@ export const defaultContentPageLayout: PageLayout = {
       },
 
       // 排序：学科在前，内容类型在后，同类型按字母
-      sortFn: (a: FileTrieNode, b: FileTrieNode) => {
-        const aIsSubject = subjectFolders.has(a.slugSegment)
-        const bIsSubject = subjectFolders.has(b.slugSegment)
+      // 注意：函数会被序列化到浏览器执行，不能引用外部变量
+      sortFn: (a, b) => {
+        const subjects = new Set(["离散数学", "逻辑学", "算法导论", "Wiki"])
+        const aIsSubject = subjects.has(a.slugSegment)
+        const bIsSubject = subjects.has(b.slugSegment)
 
         if (aIsSubject && !bIsSubject) return -1
         if (!aIsSubject && bIsSubject) return 1
@@ -151,7 +149,7 @@ export const defaultListPageLayout: PageLayout = {
         ]
         return !hiddenFolders.includes(node.slugSegment)
       },
-      mapFn: (node: FileTrieNode) => {
+      mapFn: (node) => {
         const segment = node.slugSegment
         if (subjectMap[segment]) {
           node.displayName = subjectMap[segment]
@@ -160,9 +158,10 @@ export const defaultListPageLayout: PageLayout = {
         }
         return node
       },
-      sortFn: (a: FileTrieNode, b: FileTrieNode) => {
-        const aIsSubject = subjectFolders.has(a.slugSegment)
-        const bIsSubject = subjectFolders.has(b.slugSegment)
+      sortFn: (a, b) => {
+        const subjects = new Set(["离散数学", "逻辑学", "算法导论", "Wiki"])
+        const aIsSubject = subjects.has(a.slugSegment)
+        const bIsSubject = subjects.has(b.slugSegment)
         if (aIsSubject && !bIsSubject) return -1
         if (!aIsSubject && bIsSubject) return 1
         return a.displayName.localeCompare(b.displayName, "zh-CN", {
