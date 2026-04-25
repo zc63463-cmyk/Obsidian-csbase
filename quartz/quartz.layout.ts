@@ -8,8 +8,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      "GitHub": "https://github.com/zc63463-cmyk/Obsidian-csbase",
+      "CS Wiki": "https://obsidian-csbase.pages.dev",
     },
   }),
 }
@@ -122,5 +122,8 @@ export const defaultListPageLayout: PageLayout = {
       order: ["filter", "map", "sort"],
     }),
   ],
-  right: [],
+  right: [
+    Component.Graph(),
+    Component.DesktopOnly(Component.TableOfContents()),
+  ],
 }
