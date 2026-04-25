@@ -2,6 +2,66 @@
 @use "./variables.scss" as *;
 
 /* ============================================
+   CS Wiki 自定义 CSS 变量
+   支持亮色/暗色模式自动切换
+   ============================================ */
+:root {
+  /* 状态色 */
+  --color-success: #059669;
+  --color-success-bg: rgba(5, 150, 105, 0.12);
+  --color-success-fill: #059669;
+  --color-warning: #d97706;
+  --color-warning-bg: rgba(217, 119, 6, 0.1);
+  --color-warning-bg-subtle: rgba(217, 119, 6, 0.03);
+  --color-warning-fill-a: #d97706;
+  --color-warning-fill-b: #fbbf24;
+  --color-secondary-bg: rgba(40, 75, 99, 0.08);
+  --color-secondary-bg-subtle: rgba(40, 75, 99, 0.06);
+  --color-tertiary-bg: rgba(132, 165, 157, 0.1);
+
+  /* 阴影 */
+  --shadow-xs: 0 1px 4px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.10);
+
+  /* 表格/微交互 */
+  --table-header-bg: rgba(0, 0, 0, 0.02);
+  --table-hover-bg: rgba(0, 0, 0, 0.015);
+  --progress-shimmer: rgba(255, 255, 255, 0.25);
+  --card-hover-bg: rgba(255, 255, 255, 0.8);
+}
+
+::root[saved-theme="dark"] {
+  /* 状态色 - 暗色模式增强对比度 */
+  --color-success: #34d399;
+  --color-success-bg: rgba(52, 211, 153, 0.15);
+  --color-success-fill: #34d399;
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(251, 191, 36, 0.15);
+  --color-warning-bg-subtle: rgba(251, 191, 36, 0.06);
+  --color-warning-fill-a: #fbbf24;
+  --color-warning-fill-b: #fde68a;
+  --color-secondary-bg: rgba(123, 151, 170, 0.15);
+  --color-secondary-bg-subtle: rgba(123, 151, 170, 0.10);
+  --color-tertiary-bg: rgba(132, 165, 157, 0.15);
+
+  /* 阴影 - 暗色模式更浓 */
+  --shadow-xs: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.6);
+
+  /* 表格/微交互 */
+  --table-header-bg: rgba(255, 255, 255, 0.05);
+  --table-hover-bg: rgba(255, 255, 255, 0.03);
+  --progress-shimmer: rgba(255, 255, 255, 0.12);
+  --card-hover-bg: rgba(30, 30, 32, 0.6);
+}
+
+/* ============================================
    首页专用样式 - CS Wiki Homepage
    通过 cssclasses: homepage 触发
    ============================================ */
@@ -50,7 +110,7 @@
   margin: 1rem auto 0;
   text-align: left;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-md);
 }
 
 /* ---- Stats Grid（纯div结构） ---- */
@@ -67,7 +127,7 @@
   padding: 1.5rem 1rem;
   text-align: center;
   border: 1px solid var(--lightgray);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
@@ -91,7 +151,7 @@
 
 .homepage .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .homepage .stat-card:hover::after {
@@ -156,18 +216,18 @@
 }
 
 .homepage .dash-subject-status.status-done {
-  background: rgba(5, 150, 105, 0.12);
-  color: #059669;
+  background: var(--color-success-bg);
+  color: var(--color-success);
 }
 
 .homepage .dash-subject-status.status-progress {
-  background: rgba(40, 75, 99, 0.1);
+  background: var(--color-secondary-bg);
   color: var(--secondary);
 }
 
 .homepage .dash-subject-status.status-new {
-  background: rgba(217, 119, 6, 0.1);
-  color: #d97706;
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
 }
 
 .homepage .dash-progress-track {
@@ -193,7 +253,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  background: linear-gradient(90deg, transparent, var(--progress-shimmer), transparent);
   animation: progressShimmer 2.5s ease infinite;
 }
 
@@ -203,11 +263,11 @@
 }
 
 .homepage .dash-progress-fill.fill-done {
-  background: #059669;
+  background: var(--color-success-fill);
 }
 
 .homepage .dash-progress-fill.fill-new {
-  background: linear-gradient(90deg, #d97706, #fbbf24);
+  background: linear-gradient(90deg, var(--color-warning-fill-a), var(--color-warning-fill-b));
 }
 
 .homepage .dash-subject-meta {
@@ -244,7 +304,7 @@
 
 .homepage .subject-card:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-xl);
   border-color: var(--tertiary);
 }
 
@@ -284,8 +344,8 @@
 }
 
 .homepage .status-progress { color: var(--secondary); }
-.homepage .status-done { color: #059669; }
-.homepage .status-new { color: #d97706; }
+.homepage .status-done { color: var(--color-success); }
+.homepage .status-new { color: var(--color-warning); }
 
 .homepage .subject-link {
   display: inline-block;
@@ -374,7 +434,7 @@
 }
 
 .homepage .pipeline table th {
-  background: rgba(var(--secondary-rgb, 40,75,99), 0.08);
+  background: var(--color-secondary-bg);
   color: var(--secondary);
   font-weight: 600;
   font-size: 0.85rem;
@@ -471,7 +531,7 @@
   border-radius: 18px;
   padding: 2.5rem 2rem 2rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
 }
 
 .subject-page .subject-hero h1 {
@@ -556,18 +616,18 @@
 }
 
 .subject-page .badge-done {
-  background: rgba(5, 150, 105, 0.12);
-  color: #059669;
+  background: var(--color-success-bg);
+  color: var(--color-success);
 }
 
 .subject-page .badge-progress {
-  background: rgba(40, 75, 99, 0.1);
+  background: var(--color-secondary-bg);
   color: var(--secondary);
 }
 
 .subject-page .badge-new {
-  background: rgba(217, 119, 6, 0.1);
-  color: #d97706;
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
 }
 
 /* ---- Progress Panel 进度面板 ---- */
@@ -649,7 +709,7 @@
 }
 
 .subject-page .progress-row.completed .progress-fill {
-  background: #059669;
+  background: var(--color-success-fill);
 }
 
 .subject-page .progress-row.pending .progress-fill {
@@ -696,7 +756,7 @@
 
 .subject-page .wiki-badge:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg);
   border-color: var(--tertiary);
 }
 
@@ -768,7 +828,7 @@
 
 /* 状态色：完成=绿，进行中=蓝，待开始=灰，下一步=橙 */
 .subject-page .chapter-completed > summary {
-  border-left-color: #059669;
+  border-left-color: var(--color-success);
 }
 
 .subject-page .chapter-in-progress > summary {
@@ -780,8 +840,8 @@
 }
 
 .subject-page .chapter-next > summary {
-  border-left-color: #d97706;
-  background: rgba(217, 119, 6, 0.03);
+  border-left-color: var(--color-warning);
+  background: var(--color-warning-bg-subtle);
 }
 
 .subject-page .chapter-summary-title {
@@ -800,8 +860,8 @@
   display: inline-block;
   padding: 2px 8px;
   border-radius: 10px;
-  background: rgba(217, 119, 6, 0.1);
-  color: #d97706;
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -815,7 +875,7 @@
 }
 
 .subject-page .chapter-group table th {
-  background: rgba(0, 0, 0, 0.02);
+  background: var(--table-header-bg);
   color: var(--darkgray);
   font-weight: 600;
   font-size: 0.82rem;
@@ -837,11 +897,11 @@
 }
 
 .subject-page .chapter-group table tr:hover td {
-  background: rgba(0, 0, 0, 0.015);
+  background: var(--table-hover-bg);
 }
 
 .subject-page .chapter-completed table td:last-child {
-  color: #059669;
+  color: var(--color-success);
 }
 
 .subject-page .chapter-pending table td:last-child {
@@ -1008,7 +1068,7 @@
 
 .comparison-list .comparison-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg);
   border-color: var(--tertiary);
 }
 
@@ -1070,7 +1130,7 @@
   border-radius: 10px;
   font-size: 0.72rem;
   font-weight: 600;
-  background: rgba(40, 75, 99, 0.07);
+  background: var(--color-secondary-bg-subtle);
   color: var(--secondary);
   white-space: nowrap;
 }
@@ -1151,7 +1211,7 @@
 .theorem-list h1 {
   font-size: 2rem !important;
   font-weight: 800 !important;
-  background: linear-gradient(135deg, #059669, #0d9488);
+  background: linear-gradient(135deg, var(--color-success), #0d9488);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1241,22 +1301,22 @@
 
 .theorem-list .theorem-card:hover {
   transform: translateX(4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border-left-color: #059669;
-  background: rgba(255,255,255,0.8);
+  box-shadow: var(--shadow-sm);
+  border-left-color: var(--color-success);
+  background: var(--card-hover-bg);
 }
 
 /* 左侧色条按主题区分 */
 .theorem-list .theorem-card[data-topic="sorting"] { border-left-color: #3b82f6; }
 .theorem-list .theorem-card[data-topic="data-structure"] { border-left-color: #8b5cf6; }
-.theorem-list .theorem-card[data-topic="graph"] { border-left-color: #059669; }
-.theorem-list .theorem-card[data-topic="dp"] { border-left-color: #d97706; }
+.theorem-list .theorem-card[data-topic="graph"] { border-left-color: var(--color-success); }
+.theorem-list .theorem-card[data-topic="dp"] { border-left-color: var(--color-warning); }
 .theorem-list .theorem-card[data-topic="np"] { border-left-color: #dc2626; }
 .theorem-list .theorem-card[data-topic="flow"] { border-left-color: #0891b2; }
 .theorem-list .theorem-card[data-topic="number"] { border-left-color: #7c3aed; }
 .theorem-list .theorem-card[data-topic="set"] { border-left-color: #db2777; }
-.theorem-list .theorem-card[data-topic="logic"] { border-left-color: #059669; }
-.theorem-list .theorem-card[data-topic="inference"] { border-left-color: #d97706; }
+.theorem-list .theorem-card[data-topic="logic"] { border-left-color: var(--color-success); }
+.theorem-list .theorem-card[data-topic="inference"] { border-left-color: var(--color-warning); }
 .theorem-list .theorem-card[data-topic="probability"] { border-left-color: #dc2626; }
 
 .theorem-list .thm-icon {
@@ -1266,11 +1326,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(5,150,105,0.1), rgba(13,148,136,0.1));
+  background: linear-gradient(135deg, var(--color-success-bg), var(--color-tertiary-bg));
   border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #059669;
+  color: var(--color-success);
 }
 
 .theorem-list .thm-body {
@@ -1305,7 +1365,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--secondary);
-  background: rgba(40,75,99,0.07);
+  background: var(--color-secondary-bg-subtle);
   padding: 3px 8px;
   border-radius: 6px;
   white-space: nowrap;
@@ -1452,7 +1512,7 @@
 
 .concept-hub .category-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-lg);
   border-color: var(--tertiary);
 }
 
@@ -1547,7 +1607,7 @@
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--secondary);
-  background: rgba(40,75,99,0.06);
+  background: var(--color-secondary-bg-subtle);
   padding: 2px 8px;
   border-radius: 8px;
 }
@@ -1583,13 +1643,13 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--secondary);
-  background: rgba(40,75,99,0.06);
+  background: var(--color-secondary-bg-subtle);
   text-decoration: none;
   transition: background 0.2s ease;
 }
 
 .concept-hub .qa-link:hover {
-  background: rgba(40,75,99,0.12);
+  background: var(--color-secondary-bg);
 }
 
 /* ---- 响应式 ---- */
@@ -1616,4 +1676,283 @@
   .concept-hub .hub-stat-value {
     font-size: 1.35rem;
   }
+}
+
+/* ============================================
+   暗色模式专属覆盖
+   处理 CSS 变量无法覆盖的复杂场景
+   ============================================ */
+::root[saved-theme="dark"] {
+  /* 概念页 topic 图标背景 - 增强可见度 */
+  .concept-hub .cat-foundations .cat-icon { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .concept-hub .cat-sorting .cat-icon { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .concept-hub .cat-ds .cat-icon { background: rgba(52,211,153,0.2); color: #34d399; }
+  .concept-hub .cat-dp .cat-icon { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .concept-hub .cat-graph .cat-icon { background: rgba(34,211,238,0.2); color: #22d3ee; }
+  .concept-hub .cat-string .cat-icon { background: rgba(244,114,182,0.2); color: #f472b6; }
+  .concept-hub .cat-geometry .cat-icon { background: rgba(167,139,250,0.2); color: #a78bfa; }
+  .concept-hub .cat-number .cat-icon { background: rgba(248,113,113,0.2); color: #f87171; }
+  .concept-hub .cat-probability .cat-icon { background: rgba(251,146,60,0.2); color: #fb923c; }
+  .concept-hub .cat-advanced .cat-icon { background: rgba(129,140,248,0.2); color: #818cf8; }
+  .concept-hub .cat-logic .cat-icon { background: rgba(52,211,153,0.2); color: #34d399; }
+  .concept-hub .cat-inference .cat-icon { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .concept-hub .cat-fallacy .cat-icon { background: rgba(248,113,113,0.2); color: #f87171; }
+  .concept-hub .cat-proposition .cat-icon { background: rgba(34,211,238,0.2); color: #22d3ee; }
+
+  /* 定理卡 topic 色条 - 暗色模式提亮 */
+  .theorem-list .theorem-card[data-topic="sorting"] { border-left-color: #60a5fa; }
+  .theorem-list .theorem-card[data-topic="data-structure"] { border-left-color: #a78bfa; }
+  .theorem-list .theorem-card[data-topic="np"] { border-left-color: #f87171; }
+  .theorem-list .theorem-card[data-topic="flow"] { border-left-color: #22d3ee; }
+  .theorem-list .theorem-card[data-topic="number"] { border-left-color: #a78bfa; }
+  .theorem-list .theorem-card[data-topic="set"] { border-left-color: #f472b6; }
+  .theorem-list .theorem-card[data-topic="probability"] { border-left-color: #f87171; }
+
+  /* 定理页标题渐变 - 暗色模式 */
+  .theorem-list h1 {
+    background: linear-gradient(135deg, var(--color-success), #2dd4bf);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  /* 对比页 VS 标签 - 暗色模式增强 */
+  .comparison-list .card-title-a {
+    color: var(--secondary);
+  }
+  .comparison-list .card-title-b {
+    color: var(--tertiary);
+  }
+}
+
+/* ============================================
+   内容页排版增强 - Content Page Prose
+   适用于所有详情页（概念/定理/对比/笔记）
+   ============================================ */
+
+/* ---- KaTeX 数学公式增强 ---- */
+article .katex-display {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+article .katex {
+  font-size: 1.05em;
+}
+
+/* 行内公式轻微高亮 */
+article p > .katex,
+article li > .katex {
+  padding: 0 0.15em;
+  background: var(--highlight);
+  border-radius: 3px;
+}
+
+/* ---- 代码块增强 ---- */
+article pre {
+  border-radius: 8px;
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.2s ease;
+}
+
+article pre:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+article pre code {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* 行内代码增强 */
+article :not(pre) > code {
+  background: var(--color-secondary-bg-subtle);
+  color: var(--secondary);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: 0.88em;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+article :not(pre) > code:hover {
+  border-color: var(--secondary);
+}
+
+/* ---- 引用块增强 ---- */
+article blockquote {
+  border-left: 3px solid var(--tertiary);
+  background: var(--light);
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+  margin: 1.25rem 0;
+  font-style: normal;
+}
+
+article blockquote p {
+  color: var(--darkgray);
+}
+
+/* ---- 表格增强 ---- */
+article .table-container > table {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  margin: 1.25rem 0;
+  padding: 0;
+}
+
+article .table-container > table th {
+  background: var(--color-secondary-bg);
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--lightgray);
+}
+
+article .table-container > table td {
+  font-size: 0.9rem;
+}
+
+article .table-container > table tr:hover td {
+  background: var(--table-hover-bg);
+}
+
+article .table-container > table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---- Callout 在内容页的增强 ---- */
+article .callout {
+  border-radius: 8px;
+  margin: 1.25rem 0;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.2s ease;
+}
+
+article .callout:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* [!def] 定义 callout 特殊样式 - 更醒目 */
+article .callout[data-callout="def"] {
+  border-left: 3px solid var(--color, #7c3aed);
+  background: var(--bg, #7c3aed10);
+}
+
+article .callout[data-callout="def"] .callout-title {
+  font-weight: 700;
+}
+
+/* [!proof] 证明 callout - 可折叠、视觉轻量 */
+article .callout[data-callout="proof"] {
+  border-left: 3px solid var(--color, #059669);
+  background: var(--bg, #05966910);
+}
+
+/* [!problem] 题目 callout - 醒目边框 */
+article .callout[data-callout="problem"] {
+  border-left: 3px solid var(--color, #ea580c);
+  background: var(--bg, #ea580c10);
+}
+
+/* [!faq] FAQ callout - 默认可折叠 */
+article .callout[data-callout="faq"] {
+  border-left: 3px solid var(--color, #0891b2);
+  background: var(--bg, #0891b210);
+}
+
+/* ---- 标记文本（==高亮==）增强 ---- */
+article mark {
+  background: linear-gradient(120deg, var(--textHighlight) 0%, rgba(255, 242, 54, 0.3) 100%);
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+  color: inherit;
+}
+
+::root[saved-theme="dark"] article mark {
+  background: linear-gradient(120deg, rgba(179, 170, 2, 0.35) 0%, rgba(179, 170, 2, 0.15) 100%);
+}
+
+/* ---- 内容页暗色模式覆盖 ---- */
+::root[saved-theme="dark"] {
+  /* 数学公式暗色 */
+  article .katex-display {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* 代码块暗色 */
+  article :not(pre) > code {
+    background: var(--color-secondary-bg-subtle);
+    color: var(--secondary);
+  }
+
+  article :not(pre) > code:hover {
+    border-color: var(--secondary);
+  }
+
+  /* 引用块暗色 */
+  article blockquote {
+    background: rgba(255, 255, 255, 0.03);
+    border-left-color: var(--tertiary);
+  }
+
+  /* 表格暗色 */
+  article .table-container > table th {
+    background: var(--color-secondary-bg);
+  }
+
+  article .table-container > table tr:hover td {
+    background: var(--table-hover-bg);
+  }
+
+  /* Callout 暗色增强 */
+  article .callout[data-callout="def"] {
+    --color: #a78bfa;
+    --border: #a78bfa44;
+    --bg: rgba(167, 139, 250, 0.08);
+  }
+
+  article .callout[data-callout="problem"] {
+    --color: #fb923c;
+    --border: #fb923c44;
+    --bg: rgba(251, 146, 60, 0.08);
+  }
+
+  article .callout[data-callout="faq"] {
+    --color: #22d3ee;
+    --border: #22d3ee44;
+    --bg: rgba(34, 211, 238, 0.08);
+  }
+
+  article .callout[data-callout="proof"] {
+    --color: #34d399;
+    --border: #34d39944;
+    --bg: rgba(52, 211, 153, 0.08);
+  }
+
+  /* 内置 callout 暗色模式 - 增强背景可见度 */
+  .callout[data-callout] {
+    --bg: color-mix(in srgb, var(--color) 12%, transparent);
+  }
+  .callout[data-callout="note"] { --color: #64b5f6; --border: #64b5f644; --bg: rgba(100, 181, 246, 0.1); }
+  .callout[data-callout="abstract"] { --color: #4dd0e1; --border: #4dd0e144; --bg: rgba(77, 208, 225, 0.1); }
+  .callout[data-callout="info"],
+  .callout[data-callout="todo"] { --color: #4dd0e1; --border: #4dd0e144; --bg: rgba(77, 208, 225, 0.1); }
+  .callout[data-callout="tip"] { --color: #4db6ac; --border: #4db6ac44; --bg: rgba(77, 182, 172, 0.1); }
+  .callout[data-callout="success"] { --color: #4ade80; --border: #4ade8044; --bg: rgba(74, 222, 128, 0.1); }
+  .callout[data-callout="question"] { --color: #fbbf24; --border: #fbbf2444; --bg: rgba(251, 191, 36, 0.1); }
+  .callout[data-callout="warning"] { --color: #fb923c; --border: #fb923c44; --bg: rgba(251, 146, 60, 0.1); }
+  .callout[data-callout="failure"],
+  .callout[data-callout="danger"],
+  .callout[data-callout="bug"] { --color: #f87171; --border: #f8717144; --bg: rgba(248, 113, 113, 0.1); }
+  .callout[data-callout="example"] { --color: #c084fc; --border: #c084fc44; --bg: rgba(192, 132, 252, 0.1); }
 }
