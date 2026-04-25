@@ -28,15 +28,15 @@ cssclasses:
 <div class="stats-grid">
 
 <div class="stat-card">
-  <div class="stat-icon">📝</div>
-  <div class="stat-label">笔记</div>
-  <div class="stat-value">348</div>
-</div>
-
-<div class="stat-card">
   <div class="stat-icon">📖</div>
   <div class="stat-label">概念</div>
   <div class="stat-value">368</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">📕</div>
+  <div class="stat-label">定理</div>
+  <div class="stat-value">55</div>
 </div>
 
 <div class="stat-card">
@@ -46,9 +46,59 @@ cssclasses:
 </div>
 
 <div class="stat-card">
-  <div class="stat-icon">📕</div>
-  <div class="stat-label">定理</div>
-  <div class="stat-value">55</div>
+  <div class="stat-icon">📊</div>
+  <div class="stat-label">总页数</div>
+  <div class="stat-value">467</div>
+</div>
+
+</div>
+
+---
+
+## 学习进度
+
+<div class="progress-dashboard">
+
+<div class="dash-subject">
+  <div class="dash-subject-header">
+    <span class="dash-subject-name">📐 离散数学</span>
+    <span class="dash-subject-status status-progress">进行中</span>
+  </div>
+  <div class="dash-progress-track">
+    <div class="dash-progress-fill" style="width: 72%"></div>
+  </div>
+  <div class="dash-subject-meta">
+    <span>概念 150 · 定理 15 · 对比 10</span>
+    <span class="dash-percent">72%</span>
+  </div>
+</div>
+
+<div class="dash-subject">
+  <div class="dash-subject-header">
+    <span class="dash-subject-name">🧠 逻辑学</span>
+    <span class="dash-subject-status status-done">已完成</span>
+  </div>
+  <div class="dash-progress-track">
+    <div class="dash-progress-fill fill-done" style="width: 100%"></div>
+  </div>
+  <div class="dash-subject-meta">
+    <span>概念 70 · 定理 15 · 对比 22</span>
+    <span class="dash-percent">100%</span>
+  </div>
+</div>
+
+<div class="dash-subject">
+  <div class="dash-subject-header">
+    <span class="dash-subject-name">💻 算法导论</span>
+    <span class="dash-subject-status status-new">新启动</span>
+  </div>
+  <div class="dash-progress-track">
+    <div class="dash-progress-fill fill-new" style="width: 18%"></div>
+  </div>
+  <div class="dash-subject-meta">
+    <span>概念 148 · 定理 25 · 对比 12</span>
+    <span class="dash-percent">18%</span>
+  </div>
 </div>
 
 </div>
@@ -64,7 +114,7 @@ cssclasses:
   <div class="subject-info">
     <div class="info-row"><span class="info-key">教材</span><span class="info-val">Rosen《离散数学及其应用》第8版</span></div>
     <div class="info-row"><span class="info-key">状态</span><span class="info-val status-progress">🔵 进行中</span></div>
-    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">85篇 / 概念150个 / 定理15个 / 对比10个</span></div>
+    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">概念150个 / 定理15个 / 对比10个</span></div>
   </div>
   <a class="subject-link" href="/离散数学/index">进入学科 →</a>
 </div>
@@ -74,7 +124,7 @@ cssclasses:
   <div class="subject-info">
     <div class="info-row"><span class="info-key">教材</span><span class="info-val">Copi《逻辑学导论》第15版</span></div>
     <div class="info-row"><span class="info-key">状态</span><span class="info-val status-done">✅ 已完成</span></div>
-    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">104篇 / 概念70个 / 定理15个 / 对比22个</span></div>
+    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">概念70个 / 定理15个 / 对比22个</span></div>
   </div>
   <a class="subject-link" href="/逻辑学/index">进入学科 →</a>
 </div>
@@ -84,7 +134,7 @@ cssclasses:
   <div class="subject-info">
     <div class="info-row"><span class="info-key">教材</span><span class="info-val">CLRS《算法导论》第4版</span></div>
     <div class="info-row"><span class="info-key">状态</span><span class="info-val status-new">🆕 新启动</span></div>
-    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">159篇 / 概念148个 / 定理25个 / 对比12个</span></div>
+    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">概念148个 / 定理25个 / 对比12个</span></div>
   </div>
   <a class="subject-link" href="/算法导论/index">进入学科 →</a>
 </div>
@@ -131,7 +181,7 @@ graph LR
 
 <!-- 
 最后更新：2026-04-25
-Total Wiki Pages: 815+
+Total Wiki Pages: 467
 -->
 
 #学习/导航

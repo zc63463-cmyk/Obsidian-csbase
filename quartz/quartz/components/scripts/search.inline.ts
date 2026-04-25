@@ -340,12 +340,30 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
 
   const resultToHTML = ({ slug, title, content, tags }: Item) => {
     const htmlTags = tags.length > 0 ? `<ul class="tags">${tags.join("")}</ul>` : ``
+
+    // 内容类型标签：根据 slug 路径推断
+    const slugStr = slug.toString()
+    let typeBadge = ""
+    if (slugStr.includes("/concepts/")) {
+      typeBadge = `<span class="result-type-badge type-concept">概念</span>`
+    } else if (slugStr.includes("/theorems/")) {
+      typeBadge = `<span class="result-type-badge type-theorem">定理</span>`
+    } else if (slugStr.includes("/comparisons/")) {
+      typeBadge = `<span class="result-type-badge type-comparison">对比</span>`
+    } else if (slugStr.includes("/queries/")) {
+      typeBadge = `<span class="result-type-badge type-query">题型</span>`
+    } else if (slugStr.includes("/notes/")) {
+      typeBadge = `<span class="result-type-badge type-note">笔记</span>`
+    } else if (slugStr.startsWith("Wiki/")) {
+      typeBadge = `<span class="result-type-badge type-wiki">Wiki</span>`
+    }
+
     const itemTile = document.createElement("a")
     itemTile.classList.add("result-card")
     itemTile.id = slug
     itemTile.href = resolveUrl(slug).toString()
     itemTile.innerHTML = `
-      <h3 class="card-title">${title}</h3>
+      <h3 class="card-title">${title}${typeBadge}</h3>
       ${htmlTags}
       <p class="card-description">${content}</p>
     `
@@ -377,8 +395,8 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     removeAllChildren(results)
     if (finalResults.length === 0) {
       results.innerHTML = `<a class="result-card no-match">
-          <h3>No results.</h3>
-          <p>Try another search term?</p>
+          <h3>未找到结果</h3>
+          <p>试试其他关键词？</p>
       </a>`
     } else {
       results.append(...finalResults.map(resultToHTML))

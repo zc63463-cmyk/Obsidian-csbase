@@ -1,5 +1,10 @@
 @use "../../styles/variables.scss" as *;
 
+/* ============================================
+   搜索增强样式 - CS Wiki Search Enhancement
+   毛玻璃模态框 + 优质卡片 + 快捷键提示 + 内容类型标签
+   ============================================ */
+
 .search {
   min-width: fit-content;
   max-width: 14rem;
@@ -10,17 +15,23 @@
   & > .search-button {
     background-color: transparent;
     border: 1px var(--lightgray) solid;
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: inherit;
     font-size: inherit;
     height: 2rem;
-    padding: 0 1rem 0 0;
+    padding: 0 0.75rem 0 0;
     display: flex;
     align-items: center;
     text-align: inherit;
     cursor: pointer;
     white-space: nowrap;
     width: 100%;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      border-color: var(--tertiary);
+      box-shadow: 0 0 0 2px rgba(var(--tertiary-rgb, 143, 159, 169), 0.12);
+    }
 
     & > p {
       display: inline;
@@ -40,6 +51,29 @@
         transition: stroke 0.5s ease;
       }
     }
+
+    /* 快捷键提示 Ctrl+K */
+    &::after {
+      content: "Ctrl+K";
+      display: inline-block;
+      margin-left: auto;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--gray);
+      background: var(--lightgray);
+      border: 1px solid var(--lightgray);
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+
+    @media all and ($mobile) {
+      &::after {
+        display: none;
+      }
+    }
   }
 
   & > .search-container {
@@ -52,15 +86,23 @@
     height: 100vh;
     overflow-y: auto;
     display: none;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(0, 0, 0, 0.35);
 
     &.active {
       display: inline-block;
+      animation: searchFadeIn 0.2s ease;
+    }
+
+    @keyframes searchFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     & > .search-space {
-      width: 65%;
-      margin-top: 12vh;
+      width: 680px;
+      max-width: 90vw;
+      margin-top: 10vh;
       margin-left: auto;
       margin-right: auto;
 
@@ -70,31 +112,44 @@
 
       & > * {
         width: 100%;
-        border-radius: 7px;
+        border-radius: 14px;
         background: var(--light);
         box-shadow:
-          0 14px 50px rgba(27, 33, 48, 0.12),
-          0 10px 30px rgba(27, 33, 48, 0.16);
+          0 24px 80px rgba(0, 0, 0, 0.18),
+          0 8px 32px rgba(0, 0, 0, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
         margin-bottom: 2em;
       }
 
       & > input {
         box-sizing: border-box;
-        padding: 0.5em 1em;
+        padding: 1rem 1.25rem;
         font-family: var(--bodyFont);
         color: var(--dark);
-        font-size: 1.1em;
-        border: 1px solid var(--lightgray);
+        font-size: 1.15em;
+        border: 1px solid rgba(var(--tertiary-rgb, 143, 159, 169), 0.25);
+        border-bottom: none;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
 
         &:focus {
           outline: none;
+          border-color: var(--tertiary);
+          box-shadow: 0 0 0 3px rgba(var(--tertiary-rgb, 143, 159, 169), 0.1);
+        }
+
+        &::placeholder {
+          color: var(--gray);
+          opacity: 0.7;
         }
       }
 
       & > .search-layout {
         display: none;
         flex-direction: row;
-        border: 1px solid var(--lightgray);
+        border: 1px solid rgba(var(--tertiary-rgb, 143, 159, 169), 0.25);
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
         flex: 0 0 100%;
         box-sizing: border-box;
 
@@ -129,7 +184,7 @@
 
         & > div {
           height: calc(75vh - 12vh);
-          border-radius: 5px;
+          border-radius: 0 0 14px 14px;
         }
 
         @media all and ($mobile) {
@@ -147,9 +202,11 @@
         }
 
         & .highlight {
-          background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-          border-radius: 5px;
+          background: color-mix(in srgb, var(--tertiary) 55%, rgba(255, 255, 255, 0));
+          border-radius: 3px;
+          padding: 0 2px;
           scroll-margin-top: 2rem;
+          font-weight: 600;
         }
 
         & > .preview-container {
@@ -175,13 +232,26 @@
 
         & > .results-container {
           overflow-y: auto;
+          scrollbar-width: thin;
+
+          &::-webkit-scrollbar {
+            width: 6px;
+          }
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: var(--lightgray);
+            border-radius: 3px;
+          }
 
           & .result-card {
             overflow: hidden;
-            padding: 1em;
+            padding: 0.85rem 1.1rem;
             cursor: pointer;
-            transition: background 0.2s ease;
+            transition: background 0.18s ease, border-left-color 0.18s ease;
             border-bottom: 1px solid var(--lightgray);
+            border-left: 3px solid transparent;
             width: 100%;
             display: block;
             box-sizing: border-box;
@@ -199,11 +269,22 @@
             &:hover,
             &:focus,
             &.focus {
-              background: var(--lightgray);
+              background: var(--highlight);
+              border-left-color: var(--tertiary);
             }
 
             & > h3 {
               margin: 0;
+              font-size: 0.95rem;
+              font-weight: 700;
+              line-height: 1.35;
+            }
+
+            & > p.card-description {
+              margin-top: 4px;
+              font-size: 0.82rem;
+              color: var(--gray);
+              line-height: 1.45;
             }
 
             @media all and not ($mobile) {
@@ -213,26 +294,72 @@
             }
 
             & > ul.tags {
-              margin-top: 0.45rem;
+              margin-top: 0.4rem;
               margin-bottom: 0;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 4px;
             }
 
-            & > ul > li > p {
-              border-radius: 8px;
-              background-color: var(--highlight);
-              padding: 0.2rem 0.4rem;
-              margin: 0 0.1rem;
-              line-height: 1.4rem;
-              font-weight: $boldWeight;
-              color: var(--secondary);
+            & > ul > li {
+              display: inline-block;
 
-              &.match-tag {
-                color: var(--tertiary);
+              & > p {
+                border-radius: 6px;
+                background-color: var(--highlight);
+                padding: 1px 6px;
+                margin: 0;
+                line-height: 1.35rem;
+                font-weight: $boldWeight;
+                font-size: 0.72rem;
+                color: var(--secondary);
+
+                &.match-tag {
+                  color: var(--tertiary);
+                }
               }
             }
 
             & > p {
               margin-bottom: 0;
+            }
+          }
+
+          /* 搜索结果中的内容类型标签 */
+          & .result-card .result-type-badge {
+            display: inline-block;
+            padding: 1px 7px;
+            border-radius: 5px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-left: 6px;
+            vertical-align: middle;
+            line-height: 1.5;
+
+            &.type-concept {
+              background: rgba(59, 130, 246, 0.1);
+              color: #3b82f6;
+            }
+            &.type-theorem {
+              background: rgba(5, 150, 105, 0.1);
+              color: #059669;
+            }
+            &.type-comparison {
+              background: rgba(139, 92, 246, 0.1);
+              color: #8b5cf6;
+            }
+            &.type-note {
+              background: rgba(217, 119, 6, 0.1);
+              color: #d97706;
+            }
+            &.type-query {
+              background: rgba(8, 145, 178, 0.1);
+              color: #0891b2;
+            }
+            &.type-wiki {
+              background: rgba(124, 58, 237, 0.1);
+              color: #7c3aed;
             }
           }
         }
