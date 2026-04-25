@@ -23,6 +23,7 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import P1Interactions from "./P1Interactions"
 
 export {
   ArticleTitle,
@@ -50,4 +51,5 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  P1Interactions,
 }

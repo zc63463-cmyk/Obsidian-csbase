@@ -634,8 +634,9 @@ iframe.pdf {
   top: 0;
   left: 0;
   width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--secondary), var(--tertiary));
-  transition: width 0.2s ease;
-  z-index: 9999;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.3s ease, opacity 0.2s ease;
+  z-index: 9998;
+  pointer-events: none;
 }
