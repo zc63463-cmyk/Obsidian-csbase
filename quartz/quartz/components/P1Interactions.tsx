@@ -2,8 +2,6 @@
 import readingProgressScript from "./scripts/reading-progress.inline"
 // @ts-ignore
 import backToTopScript from "./scripts/back-to-top.inline"
-// @ts-ignore
-import pageTransitionScript from "./scripts/page-transition.inline"
 import styles from "./styles/p1-interactions.scss"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
@@ -25,7 +23,6 @@ const P1Interactions: QuartzComponent = ({}) => {
   )
 }
 
-P1Interactions.beforeDOMLoaded = pageTransitionScript
 P1Interactions.afterDOMLoaded = [readingProgressScript, backToTopScript]
 P1Interactions.css = styles
 

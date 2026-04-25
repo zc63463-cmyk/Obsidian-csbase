@@ -123,34 +123,8 @@
   }
 }
 
-/* ---- ⑤ 页面过渡 ---- */
-.center {
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.center.page-exit {
-  opacity: 0;
-  transform: translateY(6px);
-}
-
-.center.page-enter {
-  opacity: 0;
-  transform: translateY(8px);
-}
-
 /* prefers-reduced-motion 尊重 */
 @media (prefers-reduced-motion: reduce) {
-  .center {
-    transition: none;
-  }
-
-  .center.page-exit,
-  .center.page-enter {
-    opacity: 1;
-    transform: none;
-  }
-
   .reading-progress-bar {
     animation: none;
   }
@@ -163,3 +137,9 @@
     transform: none;
   }
 }
+
+/* ---- ⑤ 页面过渡（已禁用 - 与Quartz SPA不兼容）---- */
+/* 页面过渡功能已移除：.center的全局transition会干扰micromorph DOM morphing
+   导致Mermaid未渲染、图片加载失败、布局错等问题。
+   如需页面过渡效果，应通过Quartz的prenav/nav事件在JS层实现，
+   而非CSS层对.center容器添加opacity/transform transition。 */
