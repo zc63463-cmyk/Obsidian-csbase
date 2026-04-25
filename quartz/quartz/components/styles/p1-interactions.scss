@@ -39,7 +39,7 @@
 }
 
 /* 暗色模式进度条 */
-::root[saved-theme="dark"] .reading-progress-bar {
+:root[saved-theme="dark"] .reading-progress-bar {
   background: linear-gradient(90deg, #64b5f6, #4dd0e1, #64b5f6);
   background-size: 200% 100%;
 }
@@ -97,18 +97,18 @@
 }
 
 /* 暗色模式回到顶部 */
-::root[saved-theme="dark"] .back-to-top {
+:root[saved-theme="dark"] .back-to-top {
   background: rgba(30, 30, 32, 0.7);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-::root[saved-theme="dark"] .back-to-top:hover {
+:root[saved-theme="dark"] .back-to-top:hover {
   background: rgba(40, 40, 44, 0.85);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-::root[saved-theme="dark"] .back-to-top svg {
+:root[saved-theme="dark"] .back-to-top svg {
   stroke: var(--lightgray);
 }
 
