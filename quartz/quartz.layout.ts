@@ -18,7 +18,20 @@ export const sharedPageComponents: SharedLayout = {
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
+      component: Component.Breadcrumbs({
+        rootName: "📚 首页",
+        nameMap: {
+          "离散数学": "📐 离散数学",
+          "逻辑学": "🧠 逻辑学",
+          "算法导论": "💻 算法导论",
+          "Wiki": "📚 Wiki",
+          "concepts": "📖 概念",
+          "notes": "📝 笔记",
+          "theorems": "📕 定理",
+          "comparisons": "⚖️ 对比",
+          "queries": "🔍 题型",
+        },
+      }),
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ArticleTitle(),
@@ -76,12 +89,40 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    Component.DesktopOnly(
+      Component.RecentNotes({
+        title: "📝 最近更新",
+        limit: 5,
+        showTags: true,
+        filter: (f) => {
+          const hidden = ["tags", "00-Raw素材", "private", "templates", "_templates", "index"]
+          return !f.slug!.split("/").some((s) => hidden.includes(s))
+        },
+      }),
+    ),
   ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs({
+      rootName: "📚 首页",
+      nameMap: {
+        "离散数学": "📐 离散数学",
+        "逻辑学": "🧠 逻辑学",
+        "算法导论": "💻 算法导论",
+        "Wiki": "📚 Wiki",
+        "concepts": "📖 概念",
+        "notes": "📝 笔记",
+        "theorems": "📕 定理",
+        "comparisons": "⚖️ 对比",
+        "queries": "🔍 题型",
+      },
+    }),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),

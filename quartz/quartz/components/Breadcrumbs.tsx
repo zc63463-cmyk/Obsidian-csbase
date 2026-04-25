@@ -26,18 +26,31 @@ interface BreadcrumbOptions {
    * Whether to display the current page in the breadcrumbs.
    */
   showCurrentPage: boolean
+  /**
+   * Map slug segments to display names (e.g. { "离散数学": "📐 离散数学" })
+   */
+  nameMap: Record<string, string>
 }
 
 const defaultOptions: BreadcrumbOptions = {
   spacerSymbol: "❯",
-  rootName: "Home",
+  rootName: "📚 首页",
   resolveFrontmatterTitle: true,
   showCurrentPage: true,
+  nameMap: {},
 }
 
-function formatCrumb(displayName: string, baseSlug: FullSlug, currentSlug: SimpleSlug): CrumbData {
+function formatCrumb(
+  displayName: string,
+  baseSlug: FullSlug,
+  currentSlug: SimpleSlug,
+  nameMap: Record<string, string>,
+  slugSegment: string,
+): CrumbData {
+  // Apply name mapping first, then replace hyphens
+  const mapped = nameMap[slugSegment] ?? displayName
   return {
-    displayName: displayName.replaceAll("-", " "),
+    displayName: mapped.replaceAll("-", " "),
     path: resolveRelative(baseSlug, currentSlug),
   }
 }
@@ -59,7 +72,13 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
     }
 
     const crumbs: CrumbData[] = pathNodes.map((node, idx) => {
-      const crumb = formatCrumb(node.displayName, fileData.slug!, simplifySlug(node.slug))
+      const crumb = formatCrumb(
+        node.displayName,
+        fileData.slug!,
+        simplifySlug(node.slug),
+        options.nameMap,
+        node.slug.split("/").pop() ?? "",
+      )
       if (idx === 0) {
         crumb.displayName = options.rootName
       }

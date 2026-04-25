@@ -33,7 +33,7 @@
   --card-hover-bg: rgba(255, 255, 255, 0.8);
 }
 
-::root[saved-theme="dark"] {
+:root[saved-theme="dark"] {
   /* 状态色 - 暗色模式增强对比度 */
   --color-success: #34d399;
   --color-success-bg: rgba(52, 211, 153, 0.15);
@@ -1682,7 +1682,7 @@
    暗色模式专属覆盖
    处理 CSS 变量无法覆盖的复杂场景
    ============================================ */
-::root[saved-theme="dark"] {
+:root[saved-theme="dark"] {
   /* 概念页 topic 图标背景 - 增强可见度 */
   .concept-hub .cat-foundations .cat-icon { background: rgba(59,130,246,0.2); color: #60a5fa; }
   .concept-hub .cat-sorting .cat-icon { background: rgba(139,92,246,0.2); color: #a78bfa; }
@@ -1877,12 +1877,12 @@ article mark {
   color: inherit;
 }
 
-::root[saved-theme="dark"] article mark {
+:root[saved-theme="dark"] article mark {
   background: linear-gradient(120deg, rgba(179, 170, 2, 0.35) 0%, rgba(179, 170, 2, 0.15) 100%);
 }
 
 /* ---- 内容页暗色模式覆盖 ---- */
-::root[saved-theme="dark"] {
+:root[saved-theme="dark"] {
   /* 数学公式暗色 */
   article .katex-display {
     background: rgba(255, 255, 255, 0.03);
