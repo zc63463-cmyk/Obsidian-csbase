@@ -6,11 +6,23 @@
    通过 cssclasses: homepage 触发
    ============================================ */
 
+/* ---- 全局页面容器 ---- */
+.homepage .page-body {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.homepage article {
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  padding: 2rem 1.5rem !important;
+}
+
 /* ---- Hero Section ---- */
 .homepage .hero-section {
   text-align: center;
   padding: 3rem 0 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .homepage .hero-section h1 {
@@ -41,7 +53,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* ---- Stats Grid ---- */
+/* ---- Stats Grid（纯div结构） ---- */
 .homepage .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -49,53 +61,45 @@
   margin: 2rem 0;
 }
 
-.homepage .stats-grid table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+.homepage .stat-card {
+  background: var(--light);
   border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border: 1px solid var(--lightgray);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.homepage .stats-grid table:hover {
-  transform: translateY(-3px);
+.homepage .stat-card:hover {
+  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.homepage .stats-grid th {
-  padding: 1.5rem 1rem;
-  background: var(--secondary);
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-align: center;
+.homepage .stat-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 4px;
 }
 
-.homepage .stats-grid td {
-  padding: 1.25rem 1rem;
-  background: var(--light);
-  text-align: center;
+.homepage .stat-label {
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.homepage .stat-value {
   font-size: 2rem;
   font-weight: 800;
   color: var(--dark);
+  line-height: 1.2;
 }
 
-@media all and ($mobile) {
-  .homepage .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .homepage .hero-section h1 {
-    font-size: 2rem;
-  }
-  .homepage .stats-grid td {
-    font-size: 1.5rem;
-  }
-}
-
-/* ---- Subject Cards ---- */
+/* ---- Subject Cards（纯div结构） ---- */
 .homepage .subject-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -103,64 +107,80 @@
   margin: 2rem 0;
 }
 
-.homepage .subject-cards > div {
+.homepage .subject-card {
   border-radius: 16px;
   padding: 1.75rem;
   background: var(--light);
   border: 1px solid var(--lightgray);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.homepage .subject-cards > div:hover {
+.homepage .subject-card:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   border-color: var(--tertiary);
 }
 
-.homepage .subject-cards h3 {
-  font-size: 1.35rem;
+.homepage .subject-card h3 {
+  font-size: 1.3rem;
   margin-top: 0 !important;
   margin-bottom: 1rem !important;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--lightgray);
 }
 
-.homepage .subject-cards table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
+.homepage .subject-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 
-.homepage .subject-cards td:first-child {
+.homepage .info-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.homepage .info-key {
   color: var(--gray);
   font-weight: 600;
-  width: 80px;
-  vertical-align: top;
-  padding: 8px 0;
+  white-space: nowrap;
+  min-width: 44px;
 }
 
-.homepage .subject-cards td:last-child {
+.homepage .info-val {
   color: var(--darkgray);
-  padding: 8px 0;
   word-break: break-word;
 }
 
-.homepage .subject-cards a {
-  color: var(--tertiary);
-  font-weight: 600;
+.homepage .status-progress { color: var(--secondary); }
+.homepage .status-done { color: #059669; }
+.homepage .status-new { color: #d97706; }
+
+.homepage .subject-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+  color: white !important;
   text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.2s;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: opacity 0.2s, transform 0.2s;
+  border: none !important;
 }
 
-.homepage .subject-cards a:hover {
-  border-bottom-color: var(--tertiary);
-}
-
-@media all and (max-width: 900px) {
-  .homepage .subject-cards {
-    grid-template-columns: 1fr;
-  }
+.homepage .subject-link:hover {
+  opacity: 0.9;
+  transform: translateX(4px);
+  border-bottom: none !important;
 }
 
 /* ---- Quick Links Grid ---- */
@@ -186,23 +206,18 @@
   background: var(--light);
   border: 1px solid var(--lightgray);
   text-decoration: none;
-  color: var(--darkgray);
+  color: var(--darkgray) !important;
   font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.25s ease;
+  border-bottom: none !important;
 }
 
 .homepage .quick-links-grid a:hover {
   background: var(--highlight);
   border-color: var(--tertiary);
-  color: var(--secondary);
+  color: var(--secondary) !important;
   transform: translateX(4px);
-}
-
-@media all and (max-width: 768px) {
-  .homepage .quick-links-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* ---- Pipeline Section ---- */
@@ -215,7 +230,7 @@
 }
 
 .homepage .pipeline pre.mermaid {
-  background: transparent;
+  background: transparent !important;
   padding: 1rem;
   text-align: center;
 }
@@ -240,12 +255,7 @@
   font-size: 0.85rem;
 }
 
-/* ---- General Page Layout Tweaks for Homepage ---- */
-.homepage article {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
+/* ---- 标题与分隔线 ---- */
 .homepage h2 {
   font-size: 1.4rem;
   margin-top: 3rem !important;
@@ -260,4 +270,48 @@
   height: 1px;
   background: linear-gradient(to right, transparent, var(--lightgray), transparent);
   margin: 3rem 0;
+}
+
+/* ============================================
+   响应式断点（桌面端优先）
+   ============================================ */
+
+/* 平板：统计卡片变2列，学科卡片变2列 */
+@media all and (max-width: 900px) {
+  .homepage .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .homepage .subject-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .homepage .quick-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 手机：全部单列 */
+@media all and (max-width: 600px) {
+  .homepage .hero-section h1 {
+    font-size: 2rem;
+  }
+  .homepage .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .homepage .stat-value {
+    font-size: 1.5rem;
+  }
+  .homepage .stat-icon {
+    font-size: 1.3rem;
+  }
+  .homepage .subject-cards {
+    grid-template-columns: 1fr;
+  }
+  .homepage .quick-links-grid {
+    grid-template-columns: 1fr;
+  }
+  .homepage article {
+    padding: 1rem !important;
+  }
 }

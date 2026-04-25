@@ -27,9 +27,29 @@ cssclasses:
 
 <div class="stats-grid">
 
-| 📝 笔记 | 📖 概念 | ⚖️ 对比 | 📕 定理 |
-|:------:|:------:|:------:|:------:|
-| **348** | **368** | **44** | **55** |
+<div class="stat-card">
+  <div class="stat-icon">📝</div>
+  <div class="stat-label">笔记</div>
+  <div class="stat-value">348</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">📖</div>
+  <div class="stat-label">概念</div>
+  <div class="stat-value">368</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">⚖️</div>
+  <div class="stat-label">对比</div>
+  <div class="stat-value">44</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">📕</div>
+  <div class="stat-label">定理</div>
+  <div class="stat-value">55</div>
+</div>
 
 </div>
 
@@ -39,36 +59,35 @@ cssclasses:
 
 <div class="subject-cards">
 
-### 📐 离散数学
+<div class="subject-card">
+  <h3>📐 离散数学</h3>
+  <div class="subject-info">
+    <div class="info-row"><span class="info-key">教材</span><span class="info-val">Rosen《离散数学及其应用》第8版</span></div>
+    <div class="info-row"><span class="info-key">状态</span><span class="info-val status-progress">🔵 进行中</span></div>
+    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">85篇 / 概念150个 / 定理15个 / 对比10个</span></div>
+  </div>
+  <a class="subject-link" href="/离散数学/index">进入学科 →</a>
+</div>
 
-| | |
-|:--|:--|
-| **教材** | Rosen《离散数学及其应用》第8版 |
-| **状态** | 🔵 进行中 |
-| **笔记** | 85篇 / 概念150个 / 定理15个 / 对比10个 |
-| **入口** | [[离散数学/index\|进入学科]] |
+<div class="subject-card">
+  <h3>🧠 逻辑学</h3>
+  <div class="subject-info">
+    <div class="info-row"><span class="info-key">教材</span><span class="info-val">Copi《逻辑学导论》第15版</span></div>
+    <div class="info-row"><span class="info-key">状态</span><span class="info-val status-done">✅ 已完成</span></div>
+    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">104篇 / 概念70个 / 定理15个 / 对比22个</span></div>
+  </div>
+  <a class="subject-link" href="/逻辑学/index">进入学科 →</a>
+</div>
 
----
-
-### 🧠 逻辑学
-
-| | |
-|:--|:--|
-| **教材** | Copi《逻辑学导论》第15版 |
-| **状态** | ✅ 已完成 |
-| **笔记** | 104篇 / 概念70个 / 定理15个 / 对比22个 |
-| **入口** | [[逻辑学/index\|进入学科]] |
-
----
-
-### 💻 算法导论
-
-| | |
-|:--|:--|
-| **教材** | CLRS《算法导论》第4版 |
-| **状态** | 🆕 新启动 |
-| **笔记** | 159篇 / 概念148个 / 定理25个 / 对比12个 |
-| **入口** | [[算法导论/index\|进入学科]] |
+<div class="subject-card">
+  <h3>💻 算法导论</h3>
+  <div class="subject-info">
+    <div class="info-row"><span class="info-key">教材</span><span class="info-val">CLRS《算法导论》第4版</span></div>
+    <div class="info-row"><span class="info-key">状态</span><span class="info-val status-new">🆕 新启动</span></div>
+    <div class="info-row"><span class="info-key">笔记</span><span class="info-val">159篇 / 概念148个 / 定理25个 / 对比12个</span></div>
+  </div>
+  <a class="subject-link" href="/算法导论/index">进入学科 →</a>
+</div>
 
 </div>
 
