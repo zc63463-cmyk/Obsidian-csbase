@@ -359,23 +359,47 @@
   margin-bottom: 1rem;
 }
 
-.subject-page .hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  margin-bottom: 1rem;
-}
-
-.subject-page .meta-item {
-  font-size: 0.88rem;
-  color: var(--darkgray);
-}
-
 .subject-page .hero-desc {
   font-size: 0.95rem;
   color: var(--darkgray);
   line-height: 1.6;
-  margin: 0 0 1.25rem !important;
+  margin: 0 0 0.75rem !important;
+}
+
+/* ---- Textbook Info 教材信息卡 ---- */
+.subject-page .textbook-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0.9rem 0;
+  margin: 0.5rem 0 1rem;
+  border-top: 1px solid var(--lightgray);
+}
+
+.subject-page .textbook-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.subject-page .textbook-icon {
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.subject-page .textbook-label {
+  color: var(--gray);
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 36px;
+}
+
+.subject-page .textbook-value {
+  color: var(--darkgray);
 }
 
 .subject-page .hero-badges {
@@ -559,6 +583,136 @@
   line-height: 1.2;
 }
 
+/* ---- Chapter Groups 章节折叠组 ---- */
+.subject-page .chapter-group {
+  border: 1px solid var(--lightgray);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.subject-page .chapter-group > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: background 0.2s ease;
+  list-style: none;
+  border-left: 4px solid var(--lightgray);
+  user-select: none;
+}
+
+.subject-page .chapter-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.subject-page .chapter-group > summary::marker {
+  display: none;
+  content: '';
+}
+
+.subject-page .chapter-group > summary .chapter-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 0.75rem;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+.subject-page .chapter-group[open] > summary .chapter-arrow {
+  transform: rotate(90deg);
+}
+
+.subject-page .chapter-group > summary:hover {
+  background: var(--highlight);
+}
+
+/* 状态色：完成=绿，进行中=蓝，待开始=灰，下一步=橙 */
+.subject-page .chapter-completed > summary {
+  border-left-color: #059669;
+}
+
+.subject-page .chapter-in-progress > summary {
+  border-left-color: var(--secondary);
+}
+
+.subject-page .chapter-pending > summary {
+  border-left-color: var(--gray);
+}
+
+.subject-page .chapter-next > summary {
+  border-left-color: #d97706;
+  background: rgba(217, 119, 6, 0.03);
+}
+
+.subject-page .chapter-summary-title {
+  flex: 1;
+}
+
+.subject-page .chapter-summary-stats {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray);
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.subject-page .chapter-next-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* 表格样式 */
+.subject-page .chapter-group table {
+  margin: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.subject-page .chapter-group table th {
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--darkgray);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 8px 14px;
+  border-bottom: 2px solid var(--lightgray);
+}
+
+.subject-page .chapter-group table td {
+  padding: 7px 14px;
+  font-size: 0.87rem;
+  border-bottom: 1px solid var(--lightgray);
+  line-height: 1.5;
+}
+
+.subject-page .chapter-group table tr:last-child td {
+  border-bottom: none;
+}
+
+.subject-page .chapter-group table tr:hover td {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.subject-page .chapter-completed table td:last-child {
+  color: #059669;
+}
+
+.subject-page .chapter-pending table td:last-child {
+  color: var(--gray);
+}
+
 /* ---- 通用标题与分隔线 ---- */
 .subject-page h2 {
   font-size: 1.35rem;
@@ -591,6 +745,11 @@
   .subject-page .progress-bar-mini {
     width: 80px;
   }
+  .subject-page .chapter-group table th,
+  .subject-page .chapter-group table td {
+    padding: 6px 10px;
+    font-size: 0.82rem;
+  }
 }
 
 @media all and (max-width: 600px) {
@@ -600,9 +759,12 @@
   .subject-page .subject-hero h1 {
     font-size: 1.6rem;
   }
-  .subject-page .hero-meta {
-    flex-direction: column;
-    gap: 4px;
+  .subject-page .textbook-row {
+    flex-wrap: wrap;
+    gap: 2px 10px;
+  }
+  .subject-page .textbook-icon {
+    display: none;
   }
   .subject-page .wiki-badges {
     grid-template-columns: repeat(2, 1fr);
@@ -624,6 +786,17 @@
   .subject-page .progress-count,
   .subject-page .progress-status {
     display: none;
+  }
+  .subject-page .chapter-group > summary {
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+  }
+  .subject-page .chapter-group table {
+    font-size: 0.82rem;
+  }
+  .subject-page .chapter-group table th,
+  .subject-page .chapter-group table td {
+    padding: 5px 8px;
   }
   .subject-page article {
     padding: 1rem !important;

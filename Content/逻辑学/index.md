@@ -23,13 +23,30 @@ related: []
 
 <span class="hero-subtitle">Introduction to Logic · 第15版</span>
 
-<div class="hero-meta">
-  <span class="meta-item">👤 Irving M. Copi / Carl Cohen / Kenneth McMahon</span>
-  <span class="meta-item">🏢 中国人民大学出版社</span>
-  <span class="meta-item">🌐 译者：张建军 等</span>
-</div>
-
 <p class="hero-desc">基于 Copi《逻辑学导论》第15版构建的知识库，覆盖逻辑基本概念、论证分析、语言与定义、谬误、直言命题、三段论、命题逻辑、谓词逻辑等核心主题。</p>
+
+<div class="textbook-info">
+  <div class="textbook-row">
+    <span class="textbook-icon">📕</span>
+    <span class="textbook-label">全名</span>
+    <span class="textbook-value">Introduction to Logic</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">👤</span>
+    <span class="textbook-label">作者</span>
+    <span class="textbook-value">Irving M. Copi / Carl Cohen / Kenneth McMahon</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">🏢</span>
+    <span class="textbook-label">出版</span>
+    <span class="textbook-value">中国人民大学出版社</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">🌐</span>
+    <span class="textbook-label">译者</span>
+    <span class="textbook-value">张建军 等</span>
+  </div>
+</div>
 
 <div class="hero-badges">
   <span class="badge badge-done">✅ 已完成</span>
@@ -91,7 +108,8 @@ related: []
 
 ## 章节列表
 
-### 阶段一：基础
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">阶段一 · 基础（第1-4章）</span> <span class="chapter-summary-stats">4/4 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -100,7 +118,10 @@ related: []
 | 第03章 | 语言与定义 | [[第03章_语言与定义-章节汇总]] | 阶段一 | ✅ 已完成 |
 | 第04章 | 谬误 | [[第04章_谬误-章节汇总]] | 阶段一 | ✅ 已完成 |
 
-### 阶段一+：直言逻辑
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">阶段一+ · 直言逻辑（第5-7章）</span> <span class="chapter-summary-stats">3/3 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -108,7 +129,10 @@ related: []
 | 第06章 | 直言三段论 | [[第06章_直言三段论-章节汇总]] | 阶段一+ | ✅ 已完成 |
 | 第07章 | 日常语言中的论证 | [[第07章_日常语言中的论证-章节汇总]] | 阶段一+ | ✅ 已完成 |
 
-### 阶段二：符号逻辑
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">阶段二 · 符号逻辑（第8-10章）</span> <span class="chapter-summary-stats">3/3 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -116,7 +140,10 @@ related: []
 | 第09章 | 命题逻辑Ⅱ | [[第09章_命题逻辑Ⅱ-章节汇总]] | 阶段二交叉 | ✅ 已完成 |
 | 第10章 | 谓词逻辑 | [[第10章_谓词逻辑-章节汇总]] | 阶段二交叉 | ✅ 已完成 |
 
-### 阶段三：归纳逻辑
+</details>
+
+<details class="chapter-group chapter-completed" open>
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">阶段三 · 归纳逻辑（第11-14章）</span> <span class="chapter-summary-stats">4/4 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -124,6 +151,8 @@ related: []
 | 第12章 | 因果推理 | [[第12章_因果推理-章节汇总]] | 阶段三归纳 | ✅ 已完成 |
 | 第13章 | 科学与假说 | [[第13章_科学与假说-章节汇总]] | 阶段三归纳 | ✅ 已完成 |
 | 第14章 | 概率 | [[第14章_概率-章节汇总]] | 阶段三归纳 | ✅ 已完成 |
+
+</details>
 
 ---
 

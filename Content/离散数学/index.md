@@ -23,12 +23,25 @@ related: []
 
 <span class="hero-subtitle">Discrete Mathematics and Its Applications · 第8版</span>
 
-<div class="hero-meta">
-  <span class="meta-item">👤 Kenneth H. Rosen</span>
-  <span class="meta-item">🏢 McGraw-Hill</span>
-</div>
-
 <p class="hero-desc">基于 Rosen《离散数学及其应用》第8版构建的知识库，覆盖逻辑与证明、集合与函数、算法、数论、计数、图论、树、布尔代数等核心主题。</p>
+
+<div class="textbook-info">
+  <div class="textbook-row">
+    <span class="textbook-icon">📕</span>
+    <span class="textbook-label">全名</span>
+    <span class="textbook-value">Discrete Mathematics and Its Applications</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">👤</span>
+    <span class="textbook-label">作者</span>
+    <span class="textbook-value">Kenneth H. Rosen</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">🏢</span>
+    <span class="textbook-label">出版</span>
+    <span class="textbook-value">McGraw-Hill</span>
+  </div>
+</div>
 
 <div class="hero-badges">
   <span class="badge badge-progress">🔵 进行中</span>
@@ -75,7 +88,8 @@ related: []
 
 ## 章节列表
 
-### 阶段一：基础
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">阶段一 · 基础（第1-5章）</span> <span class="chapter-summary-stats">5/5 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -85,7 +99,10 @@ related: []
 | 第04章 | 数论与密码学 | [[第04章_数论与密码学-章节汇总\|第04章 数论与密码学 — 章节汇总]] | 阶段一 | ✅ 已完成 |
 | 第05章 | 归纳与递归 | [[第05章_归纳与递归-章节汇总\|第05章 归纳与递归 — 章节汇总]] | 阶段一 | ✅ 已完成 |
 
-### 阶段二：黄金同步期
+</details>
+
+<details class="chapter-group chapter-completed" open>
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">阶段二 · 黄金同步期（第6-13章）</span> <span class="chapter-summary-stats">8/8 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -97,6 +114,8 @@ related: []
 | 第11章 | 树 | [[第11章_树-章节汇总\|第11章 树 — 章节汇总]] | 阶段二 | ✅ 已完成 |
 | 第12章 | 布尔代数 | [[第12章_布尔代数-章节汇总\|第12章 布尔代数 — 章节汇总]] | 阶段二 | ✅ 已完成 |
 | 第13章 | 计算建模 | [[第13章_计算建模-章节汇总\|第13章 计算建模 — 章节汇总]] | 阶段二 | ✅ 已完成 |
+
+</details>
 
 ---
 

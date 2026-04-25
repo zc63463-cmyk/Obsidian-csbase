@@ -24,13 +24,30 @@ related: []
 
 <span class="hero-subtitle">Introduction to Algorithms · 第4版</span>
 
-<div class="hero-meta">
-  <span class="meta-item">👤 Cormen / Leiserson / Rivest / Stein</span>
-  <span class="meta-item">🏢 MIT Press / 机械工业出版社</span>
-  <span class="meta-item">🌐 译者：殷建平、徐云、王刚 等</span>
-</div>
-
 <p class="hero-desc">基于 CLRS 第4版构建的知识库，覆盖算法基础、排序与序统计、数据结构、高级设计与分析技术、高级数据结构、图算法、专题选讲及数学附录。</p>
+
+<div class="textbook-info">
+  <div class="textbook-row">
+    <span class="textbook-icon">📕</span>
+    <span class="textbook-label">全名</span>
+    <span class="textbook-value">Introduction to Algorithms</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">👤</span>
+    <span class="textbook-label">作者</span>
+    <span class="textbook-value">Thomas H. Cormen / Charles E. Leiserson / Ronald L. Rivest / Clifford Stein</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">🏢</span>
+    <span class="textbook-label">出版</span>
+    <span class="textbook-value">MIT Press / 机械工业出版社</span>
+  </div>
+  <div class="textbook-row">
+    <span class="textbook-icon">🌐</span>
+    <span class="textbook-label">译者</span>
+    <span class="textbook-value">殷建平、徐云、王刚 等</span>
+  </div>
+</div>
 
 <div class="hero-badges">
   <span class="badge badge-new">🆕 新启动</span>
@@ -120,7 +137,8 @@ related: []
 
 ## 章节列表
 
-### Part I：基础（Foundations）
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part I · 基础（Foundations）</span> <span class="chapter-summary-stats">5/5 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -130,7 +148,10 @@ related: []
 | 第04章 | 分治策略 | [[第04章_分治策略-章节汇总]] | 阶段一 | ✅ 已完成 |
 | 第05章 | 概率分析与随机化算法 | [[第05章_概率分析与随机化算法-章节汇总]] | 阶段一 | ✅ 已完成 |
 
-### Part II：排序与序统计（Sorting and Order Statistics）
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part II · 排序与序统计（Sorting and Order Statistics）</span> <span class="chapter-summary-stats">4/4 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -139,7 +160,10 @@ related: []
 | 第08章 | 线性时间排序 | [[第08章_线性时间排序-章节汇总]] | 阶段一 | ✅ 已完成 |
 | 第09章 | 中位数与序统计 | [[第09章_中位数与序统计-章节汇总]] | 阶段一 | ✅ 已完成 |
 
-### Part III：数据结构（Data Structures）
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part III · 数据结构（Data Structures）</span> <span class="chapter-summary-stats">4/4 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -148,7 +172,10 @@ related: []
 | 第12章 | 二叉搜索树 | [[第12章_二叉搜索树-章节汇总]] | 阶段二 | ✅ 已完成 |
 | 第13章 | 红黑树 | [[第13章_红黑树-章节汇总]] | 阶段二 | ✅ 已完成 |
 
-### Part IV：高级设计与分析技术（Advanced Design and Analysis Techniques）
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part IV · 高级设计与分析技术（Advanced Design and Analysis）</span> <span class="chapter-summary-stats">3/3 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -156,7 +183,10 @@ related: []
 | 第15章 | 贪心算法 | [[第15章_贪心算法-章节汇总]] | 阶段二 | ✅ 已完成 |
 | 第16章 | 摊还分析 | [[第16章_摊还分析-章节汇总]] | 阶段二 | ✅ 已完成 |
 
-### Part V：高级数据结构（Advanced Data Structures）
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part V · 高级数据结构（Advanced Data Structures）</span> <span class="chapter-summary-stats">3/3 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -164,7 +194,10 @@ related: []
 | 第18章 | B树 | [[第18章_B树-章节汇总]] | 阶段三 | ✅ 已完成 |
 | 第19章 | 用于不相交集合的数据结构 | [[第19章_用于不相交集合的数据结构-章节汇总]] | 阶段三 | ✅ 已完成 |
 
-### Part VI：图算法（Graph Algorithms）
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part VI · 图算法（Graph Algorithms）</span> <span class="chapter-summary-stats">6/6 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -175,7 +208,10 @@ related: []
 | 第24章 | 最大流 | [[第24章_最大流-章节汇总]] | 阶段四 | ✅ 已完成 |
 | 第25章 | 二部图匹配 | [[第25章_二部图匹配-章节汇总]] | 阶段四 | ✅ 已完成 |
 
-### Part VII：专题选讲（Selected Topics）
+</details>
+
+<details class="chapter-group chapter-completed">
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part VII · 专题选讲（Selected Topics）</span> <span class="chapter-summary-stats">10/10 ✅</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -190,7 +226,10 @@ related: []
 | 第34章 | NP完全性 | [[第34章_NP完全性-章节汇总]] | 阶段三 | ✅ 已完成 |
 | 第35章 | 近似算法 | [[第35章_近似算法-章节汇总]] | 阶段三 | ✅ 已完成 |
 
-### Part VIII：附录（Appendix: Mathematical Background）
+</details>
+
+<details class="chapter-group chapter-next" open>
+<summary><span class="chapter-arrow">▸</span> <span class="chapter-summary-title">Part VIII · 附录（Mathematical Background）</span> <span class="chapter-summary-stats">0/4 ⏳</span> <span class="chapter-next-tag">📌 下一步</span></summary>
 
 | 章节 | 标题 | 汇总链接 | 阶段 | 状态 |
 |:-----|:-----|:---------|:-----|:-----|
@@ -198,6 +237,8 @@ related: []
 | 附录B | 集合等离散数学基础 | — | 参考 | 待学习 |
 | 附录C | 计数与概率 | — | 参考 | 待学习 |
 | 附录D | 矩阵 | — | 参考 | 待学习 |
+
+</details>
 
 ---
 
