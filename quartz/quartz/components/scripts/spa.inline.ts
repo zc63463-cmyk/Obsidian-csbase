@@ -44,29 +44,16 @@ const cleanupFns: Set<(...args: any[]) => void> = new Set()
 window.addCleanup = (fn) => cleanupFns.add(fn)
 
 function startLoading() {
-  let loadingBar = document.querySelector(".navigation-progress") as HTMLElement | null
-  if (!loadingBar) {
-    loadingBar = document.createElement("div")
-    loadingBar.className = "navigation-progress"
+  const loadingBar = document.createElement("div")
+  loadingBar.className = "navigation-progress"
+  loadingBar.style.width = "0"
+  if (!document.body.contains(loadingBar)) {
     document.body.appendChild(loadingBar)
   }
-  loadingBar.style.width = "0"
-  loadingBar.style.opacity = "1"
 
   setTimeout(() => {
-    loadingBar!.style.width = "80%"
+    loadingBar.style.width = "80%"
   }, 100)
-}
-
-function stopLoading() {
-  const loadingBar = document.querySelector(".navigation-progress") as HTMLElement | null
-  if (loadingBar) {
-    loadingBar.style.width = "100%"
-    setTimeout(() => {
-      loadingBar.style.opacity = "0"
-      setTimeout(() => loadingBar?.remove(), 200)
-    }, 150)
-  }
 }
 
 let isNavigating = false
@@ -141,7 +128,6 @@ async function _navigate(url: URL, isBack: boolean = false) {
 
   notifyNav(getFullSlug(window))
   delete announcer.dataset.persist
-  stopLoading()
 }
 
 async function navigate(url: URL, isBack: boolean = false) {
