@@ -5,7 +5,7 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  // afterBody: [Component.P1Interactions()], // 暂时禁用 - 排查 Explorer/Mermaid 问题
+  afterBody: [], // 暂时禁用P1Interactions - 排查Explorer/Mermaid问题
   footer: Component.Footer({
     links: {
       "GitHub": "https://github.com/zc63463-cmyk/Obsidian-csbase",
