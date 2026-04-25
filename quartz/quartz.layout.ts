@@ -1,5 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { FileTrieNode } from "./quartz/util/fileTrie"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -13,6 +14,26 @@ export const sharedPageComponents: SharedLayout = {
     },
   }),
 }
+
+// 学科层：中文名 + emoji
+const subjectMap: Record<string, string> = {
+  "离散数学": "📐 离散数学",
+  "逻辑学": "🧠 逻辑学",
+  "算法导论": "💻 算法导论",
+  "Wiki": "📚 Wiki",
+}
+
+// 内容类型层：统一隐藏，用 emoji 替代
+const typeMap: Record<string, string> = {
+  "concepts": "📖 概念",
+  "notes": "📝 笔记",
+  "theorems": "📕 定理",
+  "comparisons": "⚖️ 对比",
+  "queries": "🔍 题型",
+}
+
+// 学科默认展开，内容类型默认折叠
+const subjectFolders = new Set(Object.keys(subjectMap))
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
@@ -38,7 +59,59 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      title: "📖 知识导航",
+      folderDefaultState: "collapsed",
+      folderClickBehavior: "link",
+      useSavedState: true,
+
+      // 过滤内部目录
+      filterFn: (node) => {
+        const hiddenFolders = [
+          "tags",
+          "00-Raw素材",
+          "private",
+          "templates",
+          "_templates",
+          "index",
+        ]
+        return !hiddenFolders.includes(node.slugSegment)
+      },
+
+      // 学科层 vs 内容类型层差异化命名
+      mapFn: (node: FileTrieNode) => {
+        const segment = node.slugSegment
+
+        // 学科层：直接映射
+        if (subjectMap[segment]) {
+          node.displayName = subjectMap[segment]
+        }
+        // 内容类型层（concepts/notes/theorems/comparisons）：映射并降级显示
+        else if (typeMap[segment]) {
+          node.displayName = typeMap[segment]
+        }
+
+        return node
+      },
+
+      // 排序：学科在前，内容类型在后，同类型按字母
+      sortFn: (a: FileTrieNode, b: FileTrieNode) => {
+        const aIsSubject = subjectFolders.has(a.slugSegment)
+        const bIsSubject = subjectFolders.has(b.slugSegment)
+
+        if (aIsSubject && !bIsSubject) return -1
+        if (!aIsSubject && bIsSubject) return 1
+
+        // 同层按字母排序
+        return a.displayName.localeCompare(b.displayName, "zh-CN", {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+
+      // 执行顺序：先过滤 → 再映射 → 最后排序
+      order: ["filter", "map", "sort"],
+    }),
   ],
   right: [
     Component.Graph(),
@@ -62,7 +135,43 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      title: "📖 知识导航",
+      folderDefaultState: "collapsed",
+      folderClickBehavior: "link",
+      useSavedState: true,
+      filterFn: (node) => {
+        const hiddenFolders = [
+          "tags",
+          "00-Raw素材",
+          "private",
+          "templates",
+          "_templates",
+          "index",
+        ]
+        return !hiddenFolders.includes(node.slugSegment)
+      },
+      mapFn: (node: FileTrieNode) => {
+        const segment = node.slugSegment
+        if (subjectMap[segment]) {
+          node.displayName = subjectMap[segment]
+        } else if (typeMap[segment]) {
+          node.displayName = typeMap[segment]
+        }
+        return node
+      },
+      sortFn: (a: FileTrieNode, b: FileTrieNode) => {
+        const aIsSubject = subjectFolders.has(a.slugSegment)
+        const bIsSubject = subjectFolders.has(b.slugSegment)
+        if (aIsSubject && !bIsSubject) return -1
+        if (!aIsSubject && bIsSubject) return 1
+        return a.displayName.localeCompare(b.displayName, "zh-CN", {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+      order: ["filter", "map", "sort"],
+    }),
   ],
   right: [],
 }
