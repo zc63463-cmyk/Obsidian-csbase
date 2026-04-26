@@ -29,11 +29,16 @@ function toggleExplorer(this: HTMLElement) {
     nearestExplorer.getAttribute("aria-expanded") === "true" ? "false" : "true",
   )
 
+  const quartzBody = document.getElementById("quartz-body")
+
   if (!explorerCollapsed) {
     // Stop <html> from being scrollable when mobile explorer is open
     document.documentElement.classList.add("mobile-no-scroll")
+    // Shift content area right so it doesn't overlap with overlayed Explorer panel
+    quartzBody?.classList.add("lock-scroll")
   } else {
     document.documentElement.classList.remove("mobile-no-scroll")
+    quartzBody?.classList.remove("lock-scroll")
   }
 }
 
@@ -273,6 +278,8 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
   await setupExplorer(currentSlug)
 
+  const quartzBody = document.getElementById("quartz-body")
+
   // if mobile hamburger is visible, collapse by default
   for (const explorer of document.getElementsByClassName("explorer")) {
     const mobileExplorer = explorer.querySelector(".mobile-explorer")
@@ -282,8 +289,9 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
       explorer.classList.add("collapsed")
       explorer.setAttribute("aria-expanded", "false")
 
-      // Allow <html> to be scrollable when mobile explorer is collapsed
+      // Allow <html> to be scrollable and content to return to normal position
       document.documentElement.classList.remove("mobile-no-scroll")
+      quartzBody?.classList.remove("lock-scroll")
     }
 
     mobileExplorer.classList.remove("hide-until-loaded")
@@ -294,8 +302,10 @@ window.addEventListener("resize", function () {
   // Desktop explorer opens by default, and it stays open when the window is resized
   // to mobile screen size. Applies `no-scroll` to <html> in this edge case.
   const explorer = document.querySelector(".explorer")
+  const quartzBody = document.getElementById("quartz-body")
   if (explorer && !explorer.classList.contains("collapsed")) {
     document.documentElement.classList.add("mobile-no-scroll")
+    quartzBody?.classList.add("lock-scroll")
     return
   }
 })
