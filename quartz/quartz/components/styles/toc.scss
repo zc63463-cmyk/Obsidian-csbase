@@ -49,12 +49,19 @@ ul.toc-content.overflow {
 
   & > li > a {
     color: var(--dark);
-    opacity: 0.35;
+    opacity: 0.8;
     transition:
-      0.5s ease opacity,
-      0.3s ease color;
+      0.2s ease opacity,
+      0.2s ease color,
+      0.15s ease transform;
     &.in-view {
-      opacity: 0.75;
+      opacity: 1;
+      font-weight: 500;
+    }
+    &:hover {
+      opacity: 1;
+      color: var(--secondary);
+      transform: translateX(2px);
     }
   }
 

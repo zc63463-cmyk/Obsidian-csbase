@@ -263,7 +263,9 @@ a {
           max-height: 24rem;
         }
         & > .toc {
-          display: none;
+          display: flex;
+          max-height: 30vh;
+          overflow-y: auto;
         }
       }
     }

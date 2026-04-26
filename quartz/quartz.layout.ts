@@ -87,7 +87,7 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.TableOfContents(),
     Component.Backlinks(),
     Component.DesktopOnly(
       Component.RecentNotes({
@@ -165,6 +165,6 @@ export const defaultListPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.TableOfContents(),
   ],
 }
