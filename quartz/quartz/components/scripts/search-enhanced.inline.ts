@@ -1,7 +1,11 @@
 /**
- * Search Enhancement - Recent History
+ * Search Enhancement - Recent History + Overlay Z-index Fix
  * 
- * 为搜索框添加最近搜索历史记录功能
+ * 1. 为搜索框添加最近搜索历史记录功能
+ * 2. 修复搜索遮罩层 z-index 堆叠上下文问题
+ *    （.search-container 在 .sidebar.left 内，sidebar 的 z-index:1 + position:sticky
+ *     创建 stacking context，导致 search-container 的 z-index:999 实际只在 sidebar 内有效，
+ *     根层等效 z-index 仍为 1，底层内容透过遮罩泄露）
  * 不修改 search.inline.ts，通过监听搜索框事件叠加功能
  * 
  * 安全模式：IIFE + addCleanup + 只操作 fixed/absolute 定位元素
@@ -37,6 +41,23 @@
 
     let historyEl: HTMLElement | null = null
 
+    // ===== Z-index 堆叠修复 =====
+    // 搜索打开时提升侧边栏 z-index，关闭时恢复
+    const sidebar = document.querySelector(".sidebar.left") as HTMLElement | null
+
+    function boostSidebarZIndex() {
+      if (sidebar) {
+        sidebar.style.zIndex = "99999"
+      }
+    }
+
+    function resetSidebarZIndex() {
+      if (sidebar) {
+        sidebar.style.zIndex = ""
+      }
+    }
+
+    // ===== 搜索历史 =====
     function showHistory() {
       const history = getHistory()
       if (history.length === 0 || searchInput.value.trim()) return
@@ -113,11 +134,16 @@
     }
     searchInput.addEventListener("keydown", onKeyDown)
 
-    // 搜索容器关闭时清理
+    // 搜索容器开关时：清理历史 + 修复 z-index
     const searchContainer = document.querySelector(".search-container")
     const observer = new MutationObserver(() => {
-      if (searchContainer && !searchContainer.classList.contains("active")) {
-        removeHistory()
+      if (searchContainer) {
+        if (searchContainer.classList.contains("active")) {
+          boostSidebarZIndex()
+        } else {
+          resetSidebarZIndex()
+          removeHistory()
+        }
       }
     })
     if (searchContainer) {
@@ -130,6 +156,7 @@
       searchInput.removeEventListener("keydown", onKeyDown)
       observer.disconnect()
       removeHistory()
+      resetSidebarZIndex()
     })
   })
 })()
