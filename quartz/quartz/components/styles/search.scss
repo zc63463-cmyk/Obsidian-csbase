@@ -78,7 +78,6 @@
 
   & > .search-container {
     position: fixed;
-    contain: layout;
     z-index: 999;
     left: 0;
     top: 0;
@@ -86,11 +85,13 @@
     height: 100vh;
     overflow-y: auto;
     display: none;
-    backdrop-filter: blur(12px) saturate(180%);
-    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px) saturate(180%) brightness(0.7);
+    -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(0.7);
+    background: rgba(15, 15, 20, 0.6);
 
     &.active {
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
       animation: searchFadeIn 0.2s ease;
     }
 
