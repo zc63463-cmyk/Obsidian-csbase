@@ -3,9 +3,10 @@
 .toc {
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
   min-height: 1.4rem;
   flex: 0 0 auto;
+  // Allow internal toc-content to manage its own scrolling
+  max-height: calc(100vh - 12rem);
   &:has(button.toc-header.collapsed) {
     flex: 0 1 1.4rem;
   }
@@ -44,6 +45,7 @@ ul.toc-content.overflow {
   margin: 0.5rem 0;
   padding: 0;
   max-height: calc(100% - 2rem);
+  overflow-y: auto;
   overscroll-behavior: contain;
   list-style: none;
 
