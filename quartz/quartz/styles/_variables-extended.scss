@@ -11,7 +11,7 @@
    desktop: 1200px (已有 $desktop 变量)
    以下为自定义补充 */
 $bp-tablet: 900px;    // 平板竖屏（比 $mobile 宽 100px，给平板一个舒适区间）
-$bp-small: 480px;     // 小屏手机（如 iPhone SE）
+$bp-small: 600px;     // 手机（与原 hardcode 保持一致）
 
 /* 预格式化 media query 字符串（与 $mobile 格式一致）*/
 $tablet: "(max-width: #{$bp-tablet})";
