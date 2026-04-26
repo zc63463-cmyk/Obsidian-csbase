@@ -1731,115 +1731,170 @@
 
 /* ============================================
    TOC 目录组件可见性修复 & 视觉增强
-   覆盖 toc.scss 默认样式
+   覆盖 toc.scss + base.scss 默认样式
+   根因1: toc.scss opacity:0.35 太低 → 几乎不可见
+   根因2: base.scss 非桌面端 display:none → 平板/移动完全隐藏
+   根因3: base.scss .desktop-only 移动端 display:none → 整个容器消失
    ============================================ */
 
-/* ---- TOC 容器 ---- */
-.sidebar.right > .toc {
+/* ====== 第一层：强制 TOC 容器在任何屏幕下都可见 ====== */
+
+/* 覆盖 base.scss .desktop-only 在移动端的 display:none */
+.sidebar.right > .toc.desktop-only {
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
   min-height: 2rem;
+  max-height: 40vh;
+  overflow-y: auto;
 }
 
-/* ---- TOC 条目可见性：大幅提升默认 opacity ---- */
+/* 覆盖 base.scss sidebar.right 内的 display:none (非桌面模式) */
+.sidebar.right > .toc {
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+}
+
+/* ====== 第二层：TOC 条目 - 高对比度可见性 ====== */
+.toc-content.overflow > li > a,
 ul.toc-content.overflow > li > a {
-  opacity: 0.6 !important;          /* 原始 0.35 太低，几乎看不见 */
-  font-size: 0.85rem;
-  line-height: 1.55;
-  padding: 2px 0;
-  transition: opacity 0.2s ease, color 0.2s ease, transform 0.15s ease;
-  display: block;
+  /* 最关键的修复：opacity 从 0.35 提升到 0.8 */
+  opacity: 0.8 !important;
+  color: var(--dark) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.6 !important;
+  padding: 3px 4px !important;
+  display: block !important;
+  text-decoration: none !important;
+  transition: all 0.18s ease !important;
 
   &:hover {
     opacity: 1 !important;
-    color: var(--secondary);
-    transform: translateX(2px);
+    color: var(--secondary) !important;
+    transform: translateX(3px) !important;
+    background: var(--highlight) !important;
+    border-radius: 4px;
   }
 
-  /* 当前激活的条目 */
+  /* 当前激活条目 */
   &.in-view {
-    opacity: 0.9 !important;        /* 原始 0.75 仍然不够醒目 */
-    color: var(--tertiary);
-    font-weight: 500;
+    opacity: 1 !important;          /* 激活状态完全可见 */
+    color: var(--tertiary) !important;
+    font-weight: 600 !important;
 
+    /* 左侧圆点指示器 */
     &::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--tertiary);
-      margin-right: 6px;
-      vertical-align: middle;
+      content: '●' !important;
+      display: inline-block !important;
+      width: auto !important;
+      height: auto !important;
+      margin-right: 6px !important;
+      vertical-align: middle !important;
+      font-size: 0.65rem !important;
+      background: none !important;
+      border-radius: 0 !important;
     }
   }
 }
 
-/* ---- TOC 层级缩进优化 ---- */
+/* ====== 第三层：层级缩进优化 ====== */
+.toc-content.overflow,
 ul.toc-content.overflow {
   @for $i from 0 through 6 {
     & .depth-#{$i} {
-      padding-left: calc(0.8rem * #{$i});
+      padding-left: calc(0.75rem * #{$i} + 0.25rem) !important;
     }
   }
 
+  /* 一级标题加粗 */
   & .depth-0 > a {
-    font-weight: 500;
-    opacity: 0.7 !important;
+    font-weight: 500 !important;
+    font-size: 0.87rem !important;
   }
 
+  /* 二级标题稍小 */
   & .depth-1 > a {
-    font-size: 0.82rem;
+    font-size: 0.82rem !important;
   }
 }
 
-/* ---- TOC 标题按钮 ---- */
+/* ====== 第四层：TOC 标题按钮美化 ====== */
+.toc-header,
 .sidebar.right > .toc > .toc-header {
-  padding-bottom: 0.35rem;
-  margin-bottom: 0.25rem;
-  border-bottom: 1px solid var(--lightgray);
+  padding-bottom: 0.4rem !important;
+  margin-bottom: 0.3rem !important;
+  border-bottom: 1px solid var(--lightgray) !important;
 
-  & h3 {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--gray);
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+  h3 {
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: var(--gray) !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
   }
 
-  & .fold {
-    opacity: 0.5;
+  .fold {
+    opacity: 0.5 !important;
+    transition: transform 0.25s ease !important;
+  }
+
+  &.collapsed .fold {
+    transform: rotateZ(-90deg) !important;
   }
 }
 
-/* ---- 暗色模式 TOC ---- */
+/* ====== 第五层：暗色模式适配 ====== */
 :root[saved-theme="dark"] {
+  .sidebar.right > .toc.desktop-only,
+  .sidebar.right > .toc {
+    /* 暗色模式下确保容器也可见 */
+  }
+
+  .toc-content.overflow > li > a,
   ul.toc-content.overflow > li > a {
-    opacity: 0.55 !important;
+    opacity: 0.75 !important;
+    color: rgba(255,255,255,0.82) !important;
 
     &:hover {
-      color: var(--secondary);
+      color: var(--secondary) !important;
+      background: rgba(255,255,255,0.06) !important;
     }
 
     &.in-view {
-      opacity: 0.85 !important;
-      color: var(--tertiary);
+      opacity: 1 !important;
+      color: var(--tertiary) !important;
 
       &::before {
-        background: var(--tertiary);
+        color: var(--tertiary) !important;
       }
     }
   }
 
-  ul.toc-content.overflow > .depth-0 > a {
-    opacity: 0.65 !important;
+  .toc-content.overflow .depth-0 > a,
+  ul.toc-content.overflow .depth-0 > a {
+    opacity: 0.82 !important;
   }
 }
 
-/* ---- 平板端 TOC 也可见（原始 base.scss 在非桌面端隐藏了） ---- */
-@media all and (max-width: 1200px) and (min-width: 800px) {
+/* ====== 第六层：响应式安全网 - 所有屏幕尺寸都强制显示 ====== */
+
+/* 平板模式 (800-1200px): base.scss 会 display:none, 强制恢复 */
+@media all and (min-width: 800px) and (max-width: 1199.98px) {
   .sidebar.right > .toc {
-    display: flex !important;         /* 覆盖 base.scss 的 display:none */
-    max-height: 20rem;
-    overflow-y: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 30vh !important;
+    order: -1;  /* 让 TOC 排在其他组件前面 */
+  }
+}
+
+/* 移动模式 (<800px): 也允许显示（可选） */
+@media all and (max-width: 799.98px) {
+  .sidebar.right > .toc.desktop-only {
+    display: flex !important;
+    flex-direction: column !important;
   }
 }
 
