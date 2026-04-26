@@ -256,16 +256,18 @@ a {
         position: initial;
         height: unset;
         width: 100%;
-        flex-direction: row;
+        flex-direction: column;
         padding: 0;
         & > * {
-          flex: 1;
+          flex: unset;
           max-height: 24rem;
+          width: 100%;
         }
         & > .toc {
           display: flex;
           max-height: 30vh;
           overflow-y: auto;
+          width: 100%;
         }
       }
     }
