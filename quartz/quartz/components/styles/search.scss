@@ -78,7 +78,7 @@
 
   & > .search-container {
     position: fixed;
-    z-index: 999;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100vw;
@@ -87,7 +87,7 @@
     display: none;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background: rgba(0, 0, 0, 0.5);
+    background: color-mix(in srgb, var(--light) 88%, transparent);
 
     &.active {
       display: flex;
