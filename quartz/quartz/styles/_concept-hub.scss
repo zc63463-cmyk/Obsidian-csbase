@@ -1,4 +1,5 @@
 @use "./variables.scss" as *;
+@use "./variables-extended" as *;
 
 /* ============================================
    概念页专用样式 - Concept Hub
@@ -239,14 +240,14 @@
 }
 
 /* ---- 响应式 ---- */
-@media all and (max-width: 900px) {
+@media all and (#{$tablet}) {
   .concept-hub .category-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 }
 
-@media all and (max-width: 600px) {
+@media all and (#{$small}) {
   .concept-hub article {
     padding: 1rem !important;
   }

@@ -1,9 +1,21 @@
 @use "./variables.scss" as *;
 
 /* ============================================
-   CS Wiki 自定义 CSS 变量
+   CS Wiki 自定义 CSS 变量 + 断点扩展
    支持亮色/暗色模式自动切换
    ============================================ */
+
+/* ---- 响应式断点扩展 ---- */
+/* 与核心 variables.scss 的 $breakpoints 对齐：
+   mobile:  800px (已有 $mobile 变量)
+   desktop: 1200px (已有 $desktop 变量)
+   以下为自定义补充 */
+$bp-tablet: 900px;    // 平板竖屏（比 $mobile 宽 100px，给平板一个舒适区间）
+$bp-small: 480px;     // 小屏手机（如 iPhone SE）
+
+/* 预格式化 media query 字符串（与 $mobile 格式一致）*/
+$tablet: "(max-width: #{$bp-tablet})";
+$small: "(max-width: #{$bp-small})";
 ::root {
   /* 状态色 */
   --color-success: #059669;
