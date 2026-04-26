@@ -1729,6 +1729,125 @@
    覆盖 explorer.scss，提升文件树导航体验
    ============================================ */
 
+/* ============================================
+   TOC 目录组件可见性修复 & 视觉增强
+   覆盖 toc.scss 默认样式
+   ============================================ */
+
+/* ---- TOC 容器 ---- */
+.sidebar.right > .toc {
+  min-height: 2rem;
+}
+
+/* ---- TOC 条目可见性：大幅提升默认 opacity ---- */
+ul.toc-content.overflow > li > a {
+  opacity: 0.6 !important;          /* 原始 0.35 太低，几乎看不见 */
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding: 2px 0;
+  transition: opacity 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  display: block;
+
+  &:hover {
+    opacity: 1 !important;
+    color: var(--secondary);
+    transform: translateX(2px);
+  }
+
+  /* 当前激活的条目 */
+  &.in-view {
+    opacity: 0.9 !important;        /* 原始 0.75 仍然不够醒目 */
+    color: var(--tertiary);
+    font-weight: 500;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--tertiary);
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+  }
+}
+
+/* ---- TOC 层级缩进优化 ---- */
+ul.toc-content.overflow {
+  @for $i from 0 through 6 {
+    & .depth-#{$i} {
+      padding-left: calc(0.8rem * #{$i});
+    }
+  }
+
+  & .depth-0 > a {
+    font-weight: 500;
+    opacity: 0.7 !important;
+  }
+
+  & .depth-1 > a {
+    font-size: 0.82rem;
+  }
+}
+
+/* ---- TOC 标题按钮 ---- */
+.sidebar.right > .toc > .toc-header {
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--lightgray);
+
+  & h3 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  & .fold {
+    opacity: 0.5;
+  }
+}
+
+/* ---- 暗色模式 TOC ---- */
+:root[saved-theme="dark"] {
+  ul.toc-content.overflow > li > a {
+    opacity: 0.55 !important;
+
+    &:hover {
+      color: var(--secondary);
+    }
+
+    &.in-view {
+      opacity: 0.85 !important;
+      color: var(--tertiary);
+
+      &::before {
+        background: var(--tertiary);
+      }
+    }
+  }
+
+  ul.toc-content.overflow > .depth-0 > a {
+    opacity: 0.65 !important;
+  }
+}
+
+/* ---- 平板端 TOC 也可见（原始 base.scss 在非桌面端隐藏了） ---- */
+@media all and (max-width: 1200px) and (min-width: 800px) {
+  .sidebar.right > .toc {
+    display: flex !important;         /* 覆盖 base.scss 的 display:none */
+    max-height: 20rem;
+    overflow-y: auto;
+  }
+}
+
+/* ============================================
+   Explorer 侧边栏视觉增强 - 高审美 + 高效率
+   覆盖 explorer.scss，提升文件树导航体验
+   ============================================ */
+
 /* ---- 侧边栏容器基础 ---- */
 .sidebar.left .explorer {
   padding: 0 4px;
